@@ -1,0 +1,127 @@
+{
+  "openrpc": "1.2.6",
+  "info": {
+    "version": "1.0",
+    "title": "Conflux OpenRPC"
+  },
+  "methods": [
+    {
+      "name": "cfx_getTransactionByHash",
+      "summary": "Returns information about a transaction, identified by its hash.",
+      "tags": [{
+        "$ref": "#/components/tags/TRANSACTION"
+      }],
+      "params": [
+        {
+          "name": "transactionHash",
+          "summary": "hash of a transaction",
+          "description": "hash of a transaction",
+          "schema": {
+            "$ref": "#/components/schemas/BYTES32"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "name": "Transaction",
+        "description": "a transaction object, or `null` when no transaction was found",
+        "schema": {
+          "$ref": "#/components/schemas/Transaction"
+        }
+      }
+    },
+    {
+      "name": "cfx_epochNumber",
+      "summary": "Returns the epoch number corresponding to the given tag.",
+      "tags": [{
+        "$ref": "#/components/tags/BLOCK"
+      }],
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberTAG"
+        }
+      ],
+      "result": {
+        "name": "QUANTITY",
+        "schema": {
+          "$ref": "#/components/schemas/QUANTITY"
+        },
+        "description": "the integer epoch number corresponding to the given tag"
+      }
+    }
+  ],
+  "servers": [
+    {
+      "name": "Conflux Testnet",
+      "url": "https://test.confluxrpc.com",
+      "description": "Conflux testnet. https://test.confluxrpc.com",
+      "variables": {
+      }
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "epochNumberTAG": {
+        "name": "TAG",
+        "summary": "Tag for epoch number",
+        "description": "String `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter).",
+        "schema": {
+          "type": "string"
+        }
+      } 
+    },
+    "schemas": {
+      "Null": {
+        "title": "null",
+        "type": "null",
+        "description": "Null"
+      },
+      "Transaction": {
+        "type": "object"
+      },
+      "QUANTITY": {
+        "title": "QUANTITY",
+        "type": "string",
+        "description": "Hex representation of the integer"
+      },
+      "BASE32": {
+        "title": "BASE32",
+        "type": "string",
+        "description": "[CIP-37](https://github.com/Conflux-Chain/CIPs/blob/master/CIPs/cip-37.md) format address"
+      },
+      "BYTES32": {
+        "title": "DATA",
+        "type": "string",
+        "description": "Hex string representation of bytes32 data"
+      },
+      "HashOrNull": {
+        "title": "HashOrNull",
+        "oneOf": [
+          {
+            "$ref":"#/components/schemas/BYTES32"
+          },
+          {
+            "$ref":"#/components/schemas/Null"
+          }
+        ]
+      }
+    },
+    "tags": {
+      "TRANSACTION": {
+        "name": "TRANSACTION",
+        "description": "TRANSACTION related methods"
+      },
+      "BLOCK": {
+        "name": "BLOCK",
+        "description": "Block related methods"
+      },
+      "ACCOUNT": {
+        "name": "ACCOUNT",
+        "description": "ACCOUNT related methods"
+      },
+      "OTHERS": {
+        "name": "OTHERS"
+      }
+    }
+  }
+}
