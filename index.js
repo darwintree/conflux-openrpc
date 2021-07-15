@@ -22,5 +22,5 @@ app.use( async ( ctx ) => {
 })
 
 app.listen(3000, () => {
-  console.log('[demo] static-use-middleware is starting at localhost:3000')
+  console.log('[demo] static-use-middleware is starting at http://localhost:3000/conflux-openrpc.json')
 })

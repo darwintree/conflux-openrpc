@@ -8,6 +8,7 @@
     {
       "name": "cfx_getTransactionByHash",
       "summary": "Returns information about a transaction, identified by its hash.",
+      "description": "Returns information about a transaction, identified by its hash.",
       "tags": [{
         "$ref": "#/components/tags/TRANSACTION"
       }],
@@ -17,18 +18,202 @@
           "summary": "hash of a transaction",
           "description": "hash of a transaction",
           "schema": {
-            "$ref": "#/components/schemas/BYTES32"
+            "$ref": "#/components/schemas/DATA"
           },
           "required": true
         }
       ],
       "result": {
-        "name": "Transaction",
-        "description": "a transaction object, or `null` when no transaction was found",
-        "schema": {
-          "$ref": "#/components/schemas/Transaction"
+        "$ref": "#/components/contentDescriptors/transactionResult"
+      },
+      "examples": [
+        {
+          "summary": "get tx by hash",
+          "params": [
+            {
+              "value": "0x497755f45baef13a35347933c48c0b8940f2cc3347477b5ed9f165581b082699"
+            }
+          ],
+          "result": {
+            "value": {
+              "blockHash": "0x564750c06c7afb10de8beebcf24411cc73439295d5abb1264d2c9b90eee5606f",
+              "chainId": "0x2",
+              "contractCreated": null,
+              "data": "0x0",
+              "epochHeight": "0x909c9f",
+              "from": "CFX:TYPE.USER:AARC9ABYCUE0HHZGYRR53M6CXEDGCCRMMYYBJGH4XG",
+              "gas": "0xf4240",
+              "gasPrice": "0x174876e800",
+              "hash": "0x497755f45baef13a35347933c48c0b8940f2cc3347477b5ed9f165581b082699",
+              "nonce": "0x3b518",
+              "r": "0x14da6cff1a3cd864b04d1b16f480fa023f449322e318b04bb1109b5754b516ce",
+              "s": "0x304070abe6488c3532ecb66f4be32b88ee35ce48a4607b8d0c86461987a79fc7",
+              "status": "0x0",
+              "storageLimit": "0x100",
+              "to": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
+              "transactionIndex": "0x0",
+              "v": "0x1",
+              "value": "0x3635c9adc5dea00000"
+            }
+          }
         }
-      }
+      ]
+    },
+    {
+      "name": "cfx_getBlockByHash",
+      "summary": "Returns information about a block, identified by its hash.",
+      "description": "Returns information about a block, identified by its hash.",
+      "tags": [{
+        "$ref": "#/components/tags/BLOCK"
+      }],
+      "params": [
+        {
+          "name": "blockHash",
+          "summary": "hash of a block",
+          "description": "32 BYTES -hash of a block",
+          "schema": {
+            "$ref": "#/components/schemas/DATA"
+          },
+          "required": true
+        },
+        {
+          "$ref": "#/components/contentDescriptors/transactionObjectFlag",
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/blockResult"
+      },
+      "examples": [
+        {
+          "summary": "get block by block hash",
+          "params": [
+            {
+              "value": "0x692373025c7315fa18b2d02139d08e987cd7016025920f59ada4969c24e44e06"
+            },
+            {
+              "value": false
+            }
+          ],
+          "result": {
+            "value": {
+              "adaptive": false,
+              "blame": 0,
+              "deferredLogsBloomHash": "0xd397b3b043d87fcd6fad1291ff0bfd16401c274896d8c63a923727f077b8e0b5",
+              "deferredReceiptsRoot": "0x522717233b96e0a03d85f02f8127aa0e23ef2e0865c95bb7ac577ee3754875e4",
+              "deferredStateRoot": "0xd449df4ba49f5ab02abf261e976197beecf93c5198a6f0b6bd2713d84115c4ec",
+              "difficulty": "0xeee440",
+              "epochNumber": "0x1394cb",
+              "gasLimit": "0xb2d05e00",
+              "gasUsed": "0xad5ae8",
+              "hash": "0x692373025c7315fa18b2d02139d08e987cd7016025920f59ada4969c24e44e06",
+              "height": "0x1394c9",
+              "miner": "CFX:TYPE.USER:AARC9ABYCUE0HHZGYRR53M6CXEDGCCRMMYYBJGH4XG",
+              "nonce": "0x329243b1063c6773",
+              "parentHash": "0xd1c2ff79834f86eb4bc98e0e526de475144a13719afba6385cf62a4023c02ae3",
+              "powQuality": "0x2ab0c3513",
+              "refereeHashes": [
+                "0xcc103077ede14825a5667bddad79482d7bbf1f1a658fed6894fa0e9287fc6be1"
+              ],
+              "size": "0x180",
+              "timestamp": "0x5e8d32a1",
+              "transactions": [
+                "0xedfa5b9c38ba51e791cc72b8f75ff758533c8c38f426eddee3fd95d984dd59ff"
+              ],
+              "transactionsRoot": "0xfb245dae4539ea49812e822adbffa9dd2ee9b3de8f3d9a7d186d351dcc9a6ed4"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "cfx_getBlockByEpochNumber",
+      "summary": "Returns information about a block, identified by its epoch number",
+      "description": "Returns information about a block, identified by its epoch number",
+      "tags": [{
+        "$ref": "#/components/tags/BLOCK"
+      }],
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAG",
+          "required": true
+        },
+        {
+          "$ref": "#/components/contentDescriptors/transactionObjectFlag",
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/blockResult"
+      },
+      "examples": [
+        {
+          "summary": "get block by epoch number or tag",
+          "params": [
+            {
+              "value": "latest_mined"
+            },
+            {
+              "value": true
+            }
+          ],
+          "result": {
+            "value": {
+              "adaptive": false,
+              "blame": 0,
+              "deferredLogsBloomHash": "0xd397b3b043d87fcd6fad1291ff0bfd16401c274896d8c63a923727f077b8e0b5",
+              "deferredReceiptsRoot": "0x522717233b96e0a03d85f02f8127aa0e23ef2e0865c95bb7ac577ee3754875e4",
+              "deferredStateRoot": "0xd449df4ba49f5ab02abf261e976197beecf93c5198a6f0b6bd2713d84115c4ec",
+              "difficulty": "0xeee440",
+              "epochNumber": "0x1394cb",
+              "gasLimit": "0xb2d05e00",
+              "gasUsed": "0xad5ae8",
+              "hash": "0x692373025c7315fa18b2d02139d08e987cd7016025920f59ada4969c24e44e06",
+              "height": "0x1394c9",
+              "miner": "CFX:TYPE.USER:AARC9ABYCUE0HHZGYRR53M6CXEDGCCRMMYYBJGH4XG",
+              "nonce": "0x329243b1063c6773",
+              "parentHash": "0xd1c2ff79834f86eb4bc98e0e526de475144a13719afba6385cf62a4023c02ae3",
+              "powQuality": "0x2ab0c3513",
+              "refereeHashes": [
+                "0xcc103077ede14825a5667bddad79482d7bbf1f1a658fed6894fa0e9287fc6be1"
+              ],
+              "size": "0x180",
+              "timestamp": "0x5e8d32a1",
+              "transactions": [
+                "0xedfa5b9c38ba51e791cc72b8f75ff758533c8c38f426eddee3fd95d984dd59ff"
+              ],
+              "transactionsRoot": "0xfb245dae4539ea49812e822adbffa9dd2ee9b3de8f3d9a7d186d351dcc9a6ed4"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "cfx_getBestBlockHash",
+      "summary": "Returns the hash of the best block",
+      "description": "Returns the hash of the best block",
+      "tags": [{
+        "$ref": "#/components/tags/BLOCK"
+      }],
+      "params": [],
+      "result": {
+        "name": "bestBlockHash",
+        "summary": "hash of the best block",
+        "description": "32 Bytes - hash of the best block",
+        "schema": {
+          "$ref": "#/components/schemas/DATA"
+        }
+      },
+      "examples": [
+        {
+          "summary": "get block by epoch number or tag",
+          "params": [
+          ],
+          "result": {
+            "value": "0x7d54c03f4fe971d5c45d95dddc770a0ec8d5bd27d57c049ce8adc469269e35a4"
+          }
+        }
+      ]
     },
     {
       "name": "cfx_epochNumber",
@@ -38,11 +223,13 @@
       }],
       "params": [
         {
+          "summary": "optional, default: 'latest_mined'",
+          "description": "(optional, default: `'latest_mined'`) string `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter)",
           "$ref": "#/components/contentDescriptors/epochNumberTAG"
         }
       ],
       "result": {
-        "name": "QUANTITY",
+        "name": "epochNumber",
         "schema": {
           "$ref": "#/components/schemas/QUANTITY"
         },
@@ -61,14 +248,72 @@
   ],
   "components": {
     "contentDescriptors": {
-      "epochNumberTAG": {
-        "name": "TAG",
-        "summary": "Tag for epoch number",
-        "description": "String `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter).",
+      "epochNumberOrTAG": {
+        "name": "epochNumberOrTAG",
+        "summary": "Parameter for epoch number",
+        "description": "the epoch number, or the string `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter)",
         "schema": {
-          "type": "string"
+          "oneOf": [
+            {
+              "description": "epoch number",
+              "$ref": "#/components/schemas/QUANTITY"
+            },
+            {
+              "$ref": "#/components/schemas/TAG"
+            }
+          ]
         }
-      } 
+      },
+      "epochNumberTAG": {
+        "name": "epochNumberTAG",
+        "summary": "Tag for epoch number",
+        "description": "Tag for epoch number. String `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter)",
+        "schema": {
+          "$ref": "#/components/schemas/TAG"
+        }
+      },
+      "transactionObjectFlag": {
+        "name": "transactionObjectFlag",
+        "summary": "boolean",
+        "description": "if `true`, the method returns the full transaction objects. If `false`, only the hashes of the transactions are returned",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "transactionResult": {
+        "name": "transactionResult",
+        "summary": "A transaction object",
+        "description": "A transaction object, or `null` when no transaction was found",
+        "schema": {
+          "oneOf": [
+            {
+              "description": "A transaction object. Note that the fields `blockHash`, `contractCreated`, `status`, and `transactionIndex` are provided by the node as they depend on the transaction's position within the ledger. The rest of the fields are included in or derived from the original transaction",
+              "$ref": "#/components/schemas/Transaction"
+            },
+            {
+              "description": "`null` when no transaction was found",
+              "$ref": "#/components/schemas/Null"
+            }
+          ]
+        }
+      },
+      "blockResult": {
+        "name": "blockResult",
+        "summary": "A block object",
+        "description": "A block object, or `null` when no block was found",
+        "schema": {
+          "oneOf": [
+            {
+              "description": "A block object. Note that the fields `epochNumber` and `gasUsed` are provided by the node as they depend on the ledger. The rest of the fields are included in or derived from the block header directly.",
+              "$ref": "#/components/schemas/Block"
+            },
+            {
+              "description": "`null` when no block was found",
+              "$ref": "#/components/schemas/Null"
+            }
+          ]
+        }
+      }
     },
     "schemas": {
       "Null": {
@@ -77,33 +322,269 @@
         "description": "Null"
       },
       "Transaction": {
-        "type": "object"
+        "title": "transaction",
+        "type": "object",
+        "description": "a transaction object",
+        "properties": {
+          "blockHash": {
+            "oneOf": [
+              {
+                "description": "32 Bytes DATA - hash of the block where this transaction was in and got executed",
+                "$ref": "#/components/schemas/DATA"
+              },
+              {
+                "description": "`null` when the transaction is pending",
+                "$ref": "#/components/schemas/Null"
+              }
+            ]
+          },
+          "chainId": {
+            "description": "the chain ID specified by the sender",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "contractCreated": {
+            "oneOf": [
+              {
+                "description": "address of the contract created",
+                "$ref": "#/components/schemas/BASE32"
+              },
+              {
+                "description": "`null` when the transaction is not a contract deployment transaction",
+                "$ref": "#/components/schemas/Null"
+              }
+            ]
+          },
+          "data": {
+            "description": "the data sent along with the transaction",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "epochHeight": {
+            "description": "the epoch proposed by the sender. Note that this is NOT the epoch of the block containing this transaction",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "from": {
+            "description": "address of the sender",
+            "$ref": "#/components/schemas/BASE32"
+          },
+          "gas": {
+            "description": "gas provided by the sender",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "gasPrice": {
+            "description": "gas price provided by the sender in Drip",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "hash": {
+            "description": "32 Bytes - hash of the transaction",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "nonce": {
+            "description": "the number of transactions made by the sender prior to this one",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "r": {
+            "description": "32 Bytes - ECDSA signature r",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "s": {
+            "description": "32 Bytes - ECDSA signature s",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "status": {
+            "oneOf": [
+              {
+                "description": "0 for success, 1 for error occured",
+                "$ref": "#/components/schemas/QUANTITY"
+              },
+              {
+                "description": "`null` when the transaction is skipped or not packed",
+                "$ref": "#/components/schemas/Null"
+              }
+            ]
+          },
+          "storageLimit": {
+            "description": "the storage limit specified by the sender",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "to": {
+            "oneOf": [
+              {
+                "description": "address of the receiver",
+                "$ref": "#/components/schemas/BASE32"
+              },
+              {
+                "description": "`null` when it is a contract deployment transaction",
+                "$ref": "#/components/schemas/Null"
+              }
+            ]
+          },
+          "transactionIndex": {
+            "oneOf": [
+              {
+                "description": "the transaction's position in the block",
+                "$ref": "#/components/schemas/QUANTITY"
+              },
+              {
+                "description": "`null` when the transaction is pending",
+                "$ref": "#/components/schemas/Null"
+              }
+            ]
+          },
+          "v": {
+            "description": "ECDSA recovery id",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "value": {
+            "description": "value transferred in Drip",
+            "$ref": "#/components/schemas/QUANTITY"
+          }
+        }
+      },
+      "Block": {
+        "title": "Block",
+        "type": "object",
+        "description": "a block object",
+        "properties": {
+          "adaptive": {
+            "description": "`true` if the weight of the block is adaptive under the GHAST rule",
+            "type": "boolean"
+          },
+          "blame": {
+            "description": "if 0, then this block does not blame any blocks on its parent path. If it is `n > 0`, then this block blames its `n` predecessors on its parent path, e.g. when `n = 1`, then the block blames its parent but not its parent's parent",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "deferredLogsBloomHash": {
+            "description": "32 Bytes - the hash of the logs bloom after deferred execution at the block's epoch (assuming it is the pivot block)",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "deferredReceiptsRoot": {
+            "description": "32 Bytes - the Merkle root of the receipts after deferred execution at the block's epoch (assuming it is the pivot block)",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "deferredStateRoot": {
+            "description": "32 Bytes - the hash of the state trie root triplet after deferred execution at the block's epoch (assuming it is the pivot block)",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "difficulty": {
+            "description": "the PoW difficulty of this block",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "epochNumber": {
+            "oneOf": [
+              {
+                "description": "the number of the epoch containing this block in the node's view of the ledger",
+                "$ref": "#/components/schemas/QUANTITY"
+              },
+              {
+                "description": "`null` when the epoch number is not determined (e.g. the block is not in the best block's past set)",
+                "$ref": "#/components/schemas/Null"
+              }
+            ]
+          },
+          "gasLimit": {
+            "description": "the maximum gas allowed in this block",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "gasUsed": {
+            "oneOf": [
+              {
+                "description": "the total gas used in this block",
+                "$ref": "#/components/schemas/QUANTITY"
+              },
+              {
+                "description": "`null` when the block is pending",
+                "$ref": "#/components/schemas/Null"
+              }
+            ]
+          },
+          "hash": {
+            "description": "32 Bytes - hash of the block",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "height": {
+            "description": "the height of the block",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "miner": {
+            "description": "the address of the beneficiary to whom the mining rewards were given",
+            "$ref": "#/components/schemas/BASE32"
+          },
+          "nonce": {
+            "description": "8 Bytes - hash of the generated proof-of-work",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "parentHash": {
+            "description": "32 Bytes - hash of the parent block",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "powQuality": {
+            "oneOf": [
+              {
+                "description": "the PoW quality",
+                "$ref": "#/components/schemas/DATA"
+              },
+              {
+                "description": "`null` when the block is pending",
+                "$ref": "#/components/schemas/Null"
+              }
+            ]
+          },
+          "refereeHashes": {
+            "type": "array",
+            "description": "array of referee block hashes"
+          },
+          "size": {
+            "description": "the size of this block in bytes, excluding the block header",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "timestamp": {
+            "description": "the unix timestamp for when the block was created",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "transactions": {
+            "oneOf": [
+              {
+                "type": "array",
+                "description": "transaction objects if the second parameter is `true`",
+                "items": {
+                  "$ref": "#/components/schemas/Transaction"
+                }
+              },
+              {
+                "type": "array",
+                "description": "32-byte transaction hashes if the second parameter is `false`",
+                "items": {
+                  "description": "32-byte transaction hash",
+                  "$ref": "#/components/schemas/DATA"
+                }
+              }
+            ]
+          },
+          "transactionsRoot": {
+            "description": "32 Bytes - the Merkle root of the transactions in this block",
+            "$ref": "#/components/schemas/DATA"
+          }
+        }
       },
       "QUANTITY": {
         "title": "QUANTITY",
         "type": "string",
-        "description": "Hex representation of the integer"
+        "description": "Integer encode as hex string, prefix with '0x'"
+      },
+      "TAG": {
+        "title": "TAG",
+        "type": "string",
+        "description": "Tag for epoch number. String `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`"
       },
       "BASE32": {
         "title": "BASE32",
         "type": "string",
         "description": "[CIP-37](https://github.com/Conflux-Chain/CIPs/blob/master/CIPs/cip-37.md) format address"
       },
-      "BYTES32": {
+      "DATA": {
         "title": "DATA",
         "type": "string",
-        "description": "Hex string representation of bytes32 data"
-      },
-      "HashOrNull": {
-        "title": "HashOrNull",
-        "oneOf": [
-          {
-            "$ref":"#/components/schemas/BYTES32"
-          },
-          {
-            "$ref":"#/components/schemas/Null"
-          }
-        ]
+        "description": "Byte arrays, account addresses, hashes or bytecode arrays encoded as hex, prefix with '0x', two hex digits per byte"
       }
     },
     "tags": {
