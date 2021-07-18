@@ -4,60 +4,54 @@
     "version": "1.0",
     "title": "Conflux OpenRPC"
   },
-  "methods": [
-    {
+  "methods": [{
       "name": "cfx_getTransactionByHash",
       "summary": "Returns information about a transaction, identified by its hash.",
       "description": "Returns information about a transaction, identified by its hash.",
       "tags": [{
         "$ref": "#/components/tags/TRANSACTION"
       }],
-      "params": [
-        {
-          "name": "transactionHash",
-          "summary": "hash of a transaction",
-          "description": "hash of a transaction",
-          "schema": {
-            "$ref": "#/components/schemas/DATA"
-          },
-          "required": true
-        }
-      ],
+      "params": [{
+        "name": "transactionHash",
+        "summary": "hash of a transaction",
+        "description": "hash of a transaction",
+        "schema": {
+          "$ref": "#/components/schemas/DATA"
+        },
+        "required": true
+      }],
       "result": {
         "$ref": "#/components/contentDescriptors/transactionResult"
       },
-      "examples": [
-        {
-          "summary": "get tx by hash",
-          "params": [
-            {
-              "value": "0x497755f45baef13a35347933c48c0b8940f2cc3347477b5ed9f165581b082699"
-            }
-          ],
-          "result": {
-            "value": {
-              "blockHash": "0x564750c06c7afb10de8beebcf24411cc73439295d5abb1264d2c9b90eee5606f",
-              "chainId": "0x2",
-              "contractCreated": null,
-              "data": "0x0",
-              "epochHeight": "0x909c9f",
-              "from": "CFX:TYPE.USER:AARC9ABYCUE0HHZGYRR53M6CXEDGCCRMMYYBJGH4XG",
-              "gas": "0xf4240",
-              "gasPrice": "0x174876e800",
-              "hash": "0x497755f45baef13a35347933c48c0b8940f2cc3347477b5ed9f165581b082699",
-              "nonce": "0x3b518",
-              "r": "0x14da6cff1a3cd864b04d1b16f480fa023f449322e318b04bb1109b5754b516ce",
-              "s": "0x304070abe6488c3532ecb66f4be32b88ee35ce48a4607b8d0c86461987a79fc7",
-              "status": "0x0",
-              "storageLimit": "0x100",
-              "to": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
-              "transactionIndex": "0x0",
-              "v": "0x1",
-              "value": "0x3635c9adc5dea00000"
-            }
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get transaction by hash in mainnet",
+        "params": [{
+          "value": "0xa2ae4700d3ca272c773628a6bf8c2a7fc794a2d3b27e675107df0f6b1a6cbad7"
+        }],
+        "result": {
+          "value": {
+            "blockHash": "0xf48cc108af0a5651b1d51bfe95bdce7fca2cb5ba225a079e7f8458b4b765fbc9",
+            "chainId": "0x1",
+            "contractCreated": null,
+            "data": "0x32f289cf0000000000000000000000000000000000000000000000000000000000000000",
+            "epochHeight": "0x217238a",
+            "from": "CFXTEST:TYPE.USER:AAMR2CTWF2GA3PA0NFZ31DU66XURRF8X9UM9NHE9DS",
+            "gas": "0xb9a9",
+            "gasPrice": "0x1",
+            "hash": "0x4283f97a3fcca001d8bce56d1752484161d41b2042ef66c949e97e415e7fae80",
+            "nonce": "0x0",
+            "r": "0xaef08b7054540186ca84b72258191f122b174ef1fd9b4339253950e92362a7a",
+            "s": "0x2a59ccd8e7736192fa428b5b6e757b3b00ff54a292a42cd15d7fda6c8e8b943a",
+            "status": "0x0",
+            "storageLimit": "0x40",
+            "to": "CFXTEST:TYPE.CONTRACT:ACEJJFA80VJ06J2JGTZ9PNGKV423FHKUXJ786KJR61",
+            "transactionIndex": "0x0",
+            "v": "0x0",
+            "value": "0x0"
           }
         }
-      ]
+      }]
     },
     {
       "name": "cfx_getBlockByHash",
@@ -66,8 +60,7 @@
       "tags": [{
         "$ref": "#/components/tags/BLOCK"
       }],
-      "params": [
-        {
+      "params": [{
           "name": "blockHash",
           "summary": "hash of a block",
           "description": "32 BYTES -hash of a block",
@@ -84,47 +77,50 @@
       "result": {
         "$ref": "#/components/contentDescriptors/blockResult"
       },
-      "examples": [
-        {
-          "summary": "get block by block hash",
-          "params": [
-            {
-              "value": "0x692373025c7315fa18b2d02139d08e987cd7016025920f59ada4969c24e44e06"
-            },
-            {
-              "value": false
-            }
-          ],
-          "result": {
-            "value": {
-              "adaptive": false,
-              "blame": 0,
-              "deferredLogsBloomHash": "0xd397b3b043d87fcd6fad1291ff0bfd16401c274896d8c63a923727f077b8e0b5",
-              "deferredReceiptsRoot": "0x522717233b96e0a03d85f02f8127aa0e23ef2e0865c95bb7ac577ee3754875e4",
-              "deferredStateRoot": "0xd449df4ba49f5ab02abf261e976197beecf93c5198a6f0b6bd2713d84115c4ec",
-              "difficulty": "0xeee440",
-              "epochNumber": "0x1394cb",
-              "gasLimit": "0xb2d05e00",
-              "gasUsed": "0xad5ae8",
-              "hash": "0x692373025c7315fa18b2d02139d08e987cd7016025920f59ada4969c24e44e06",
-              "height": "0x1394c9",
-              "miner": "CFX:TYPE.USER:AARC9ABYCUE0HHZGYRR53M6CXEDGCCRMMYYBJGH4XG",
-              "nonce": "0x329243b1063c6773",
-              "parentHash": "0xd1c2ff79834f86eb4bc98e0e526de475144a13719afba6385cf62a4023c02ae3",
-              "powQuality": "0x2ab0c3513",
-              "refereeHashes": [
-                "0xcc103077ede14825a5667bddad79482d7bbf1f1a658fed6894fa0e9287fc6be1"
-              ],
-              "size": "0x180",
-              "timestamp": "0x5e8d32a1",
-              "transactions": [
-                "0xedfa5b9c38ba51e791cc72b8f75ff758533c8c38f426eddee3fd95d984dd59ff"
-              ],
-              "transactionsRoot": "0xfb245dae4539ea49812e822adbffa9dd2ee9b3de8f3d9a7d186d351dcc9a6ed4"
-            }
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get block by block hash in mainnet",
+        "params": [{
+            "value": "0x23a6e84d9a24dffc8436e72b0e240688d23e29b8cda0b301ff20baab1573c9fd"
+          },
+          {
+            "value": false
+          }
+        ],
+        "result": {
+          "value": {
+            "adaptive": false,
+            "blame": "0x0",
+            "custom": [
+              [
+                1
+              ]
+            ],
+            "deferredLogsBloomHash": "0xd397b3b043d87fcd6fad1291ff0bfd16401c274896d8c63a923727f077b8e0b5",
+            "deferredReceiptsRoot": "0x1c9e4c6913e56253dd840ed8fb7823b46e5a75b1522212b3464e323787850dfb",
+            "deferredStateRoot": "0x8f726764e0f86c6a79246a4ed5fb0686e457ed5af4a1f971d8e0063873cebfa3",
+            "difficulty": "0xb06f836a76",
+            "epochNumber": "0x10c3e6e",
+            "gasLimit": "0x1c9c380",
+            "gasUsed": "0x1ce62",
+            "hash": "0x23a6e84d9a24dffc8436e72b0e240688d23e29b8cda0b301ff20baab1573c9fd",
+            "height": "0x10c3e6e",
+            "miner": "CFX:TYPE.USER:AAMCR303A3P32J0UU3AVUKHMB0MREVJPSU7HEP08JJ",
+            "nonce": "0x2684000005cdb6d5",
+            "parentHash": "0x3d9eb6622da15cf990a5b994bda07109b87006c2d9304a084cafb1629701f29b",
+            "powQuality": "0xb2fde57e24",
+            "refereeHashes": [
+              "0xa8060293b9691181e4d1e909be316d6b9d40f18df230e781650befb0e9109fa2"
+            ],
+            "size": "0x1f6",
+            "timestamp": "0x60cef8dc",
+            "transactions": [
+              "0xa2ae4700d3ca272c773628a6bf8c2a7fc794a2d3b27e675107df0f6b1a6cbad7"
+            ],
+            "transactionsRoot": "0x6a8520d409d06c9ae425309a54b64ab4893007c022aa4fec19a5b5cfc95dda89"
           }
         }
-      ]
+      }]
     },
     {
       "name": "cfx_getBlockByEpochNumber",
@@ -133,8 +129,7 @@
       "tags": [{
         "$ref": "#/components/tags/BLOCK"
       }],
-      "params": [
-        {
+      "params": [{
           "$ref": "#/components/contentDescriptors/epochNumberOrTAG",
           "required": true
         },
@@ -146,47 +141,48 @@
       "result": {
         "$ref": "#/components/contentDescriptors/blockResult"
       },
-      "examples": [
-        {
-          "summary": "get block by epoch number or tag",
-          "params": [
-            {
-              "value": "latest_mined"
-            },
-            {
-              "value": true
-            }
-          ],
-          "result": {
-            "value": {
-              "adaptive": false,
-              "blame": 0,
-              "deferredLogsBloomHash": "0xd397b3b043d87fcd6fad1291ff0bfd16401c274896d8c63a923727f077b8e0b5",
-              "deferredReceiptsRoot": "0x522717233b96e0a03d85f02f8127aa0e23ef2e0865c95bb7ac577ee3754875e4",
-              "deferredStateRoot": "0xd449df4ba49f5ab02abf261e976197beecf93c5198a6f0b6bd2713d84115c4ec",
-              "difficulty": "0xeee440",
-              "epochNumber": "0x1394cb",
-              "gasLimit": "0xb2d05e00",
-              "gasUsed": "0xad5ae8",
-              "hash": "0x692373025c7315fa18b2d02139d08e987cd7016025920f59ada4969c24e44e06",
-              "height": "0x1394c9",
-              "miner": "CFX:TYPE.USER:AARC9ABYCUE0HHZGYRR53M6CXEDGCCRMMYYBJGH4XG",
-              "nonce": "0x329243b1063c6773",
-              "parentHash": "0xd1c2ff79834f86eb4bc98e0e526de475144a13719afba6385cf62a4023c02ae3",
-              "powQuality": "0x2ab0c3513",
-              "refereeHashes": [
-                "0xcc103077ede14825a5667bddad79482d7bbf1f1a658fed6894fa0e9287fc6be1"
-              ],
-              "size": "0x180",
-              "timestamp": "0x5e8d32a1",
-              "transactions": [
-                "0xedfa5b9c38ba51e791cc72b8f75ff758533c8c38f426eddee3fd95d984dd59ff"
-              ],
-              "transactionsRoot": "0xfb245dae4539ea49812e822adbffa9dd2ee9b3de8f3d9a7d186d351dcc9a6ed4"
-            }
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get block by epoch number or tag in mainnet",
+        "params": [{
+            "value": "latest_mined"
+          },
+          {
+            "value": false
+          }
+        ],
+        "result": {
+          "value": {
+            "adaptive": false,
+            "blame": "0x0",
+            "custom": [
+              [
+                1
+              ]
+            ],
+            "deferredLogsBloomHash": "0xd397b3b043d87fcd6fad1291ff0bfd16401c274896d8c63a923727f077b8e0b5",
+            "deferredReceiptsRoot": "0x976f3ebf6a04e4040cfcdc5ee303708e18eb1da0a5a0e656e0c0d6f753801643",
+            "deferredStateRoot": "0xd3355e908d7e2f3fa238bf30e5591be38104ad109f13959ba6ff59496488534c",
+            "difficulty": "0xb37769f077",
+            "epochNumber": "0x12cb8d9",
+            "gasLimit": "0x1c9c380",
+            "gasUsed": "0x193a5",
+            "hash": "0x3b0acd005ab0df1a6eca58d12b702307a9c85e0f1f6b2458746ffd670a150ead",
+            "height": "0x12cb8d9",
+            "miner": "CFX:TYPE.USER:AAMGVYZHT7H1ZXDGHB9EE9W26WRZ8RD3GJ837392DP",
+            "nonce": "0x61a900002f902102",
+            "parentHash": "0xe43fa18113d355176b0fd0e00ad50c0e8d70cb2fe34ec05044db43750df6281d",
+            "powQuality": "0xb5a1f0e78e",
+            "refereeHashes": [],
+            "size": "0x74",
+            "timestamp": "0x60f2b1d0",
+            "transactions": [
+              "0xee33906a95deaecc6c23ff9f78a448b324ed85defb40753c8bd34663393c449e"
+            ],
+            "transactionsRoot": "0x9f4c1d6c02e00c5b2fe627a8ae6d2eb6cb63d8c37179cdec5505092f77ee0a16"
           }
         }
-      ]
+      }]
     },
     {
       "name": "cfx_getBestBlockHash",
@@ -204,57 +200,1449 @@
           "$ref": "#/components/schemas/DATA"
         }
       },
-      "examples": [
-        {
-          "summary": "get block by epoch number or tag",
-          "params": [
-          ],
-          "result": {
-            "value": "0x7d54c03f4fe971d5c45d95dddc770a0ec8d5bd27d57c049ce8adc469269e35a4"
-          }
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get block by epoch number or tag in mainnet",
+        "params": [],
+        "result": {
+          "value": "0x37864d62e22c6958257aa87e7923ab834e1773ca54b800b7ee4d0a1761e473ab"
         }
-      ]
+      }]
     },
     {
       "name": "cfx_epochNumber",
-      "summary": "Returns the epoch number corresponding to the given tag.",
+      "summary": "Returns the epoch number corresponding to the given tag",
       "tags": [{
         "$ref": "#/components/tags/BLOCK"
       }],
-      "params": [
+      "params": [{
+        "summary": "optional, default: 'latest_mined'",
+        "description": "(optional, default: `'latest_mined'`) string `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter)",
+        "$ref": "#/components/contentDescriptors/epochNumberTAG"
+      }],
+      "result": {
+        "name": "epochNumber",
+        "summary": "the integer epoch number corresponding to the given tag",
+        "description": "the integer epoch number corresponding to the given tag",
+        "schema": {
+          "$ref": "#/components/schemas/QUANTITY"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get epoch number in mainnet",
+        "params": [{
+          "value": "latest_mined"
+        }],
+        "result": {
+          "value": "0x12cb90b"
+        }
+      }]
+    },
+    {
+      "name": "cfx_gasPrice",
+      "summary": "Returns the current price per gas in Drip",
+      "description": "Returns the current price per gas in Drip",
+      "tags": [{
+        "$ref": "#/components/tags/OTHERS"
+      }],
+      "params": [],
+      "result": {
+        "name": "gasPrice",
+        "summary": "integer of the current gas price in Drip",
+        "description": "integer of the current gas price in Drip",
+        "schema": {
+          "$ref": "#/components/schemas/QUANTITY"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get epoch number in mainnet",
+        "params": [],
+        "result": {
+          "value": "0x1"
+        }
+      }]
+    },
+    {
+      "name": "cfx_getBlocksByEpoch",
+      "summary": "Returns the block hashes in the specified epoch",
+      "description": "Returns the block hashes in the specified epoch",
+      "tags": [{
+        "$ref": "#/components/tags/BLOCK"
+      }],
+      "params": [{
+        "$ref": "#/components/contentDescriptors/epochNumberOrTAG",
+        "required": true
+      }],
+      "result": {
+        "name": "blockHashArray",
+        "summary": "array of block hashes",
+        "description": "array of block hashes, sorted by their execution (topological) order. Note that the last one is the pivot hash",
+        "schema": {
+          "type": "array",
+          "items": {
+            "description": "32 bytes block hash",
+            "$ref": "#/components/schemas/DATA"
+          }
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get blocks by epoch number parameter in mainnet",
+        "params": [{
+          "value": "latest_mined"
+        }],
+        "result": {
+          "value": [
+            "0x74dc7160a21b55ad26e101f6554854da7939586514ab364ee70fa67743e373c9",
+            "0x9e24f23ffb55aa1c48e97710a5f2897e8674703e44e1129e887e2378646ed039"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "cfx_getBalance",
+      "summary": "Returns the balance of the given account, identified by its address",
+      "description": "Returns the balance of the given account, identified by its address",
+      "tags": [{
+        "$ref": "#/components/tags/ACCOUNT"
+      }],
+      "params": [{
+          "summary": "address to check for balance",
+          "description": "address to check for balance",
+          "$ref": "#/components/contentDescriptors/address",
+          "required": true
+        },
         {
-          "summary": "optional, default: 'latest_mined'",
-          "description": "(optional, default: `'latest_mined'`) string `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter)",
-          "$ref": "#/components/contentDescriptors/epochNumberTAG"
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
         }
       ],
       "result": {
-        "name": "epochNumber",
+        "name": "balance",
+        "summary": "integer of the current balance in Drip",
+        "description": "integer of the current balance in Drip",
+        "schema": {
+          "$ref": "#/components/schemas/QUANTITY"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get balance of address in mainnet",
+        "params": [{
+            "value": "cfx:type.user:aarc9abycue0hhzgyrr53m6cxedgccrmmyybjgh4xg"
+          },
+          {
+            "value": "latest_state"
+          }
+        ],
+        "result": {
+          "value": "0x0234c8a3397aab58"
+        }
+      }]
+    },
+    {
+      "name": "cfx_getStakingBalance",
+      "summary": "Returns the stacking balance of the given account, identified by its address",
+      "description": "Returns the stacking balance of the given account, identified by its address",
+      "tags": [{
+        "$ref": "#/components/tags/ACCOUNT"
+      }],
+      "params": [{
+          "summary": "address to check for staking balance",
+          "description": "address to check for staking balance",
+          "$ref": "#/components/contentDescriptors/address",
+          "required": true
+        },
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+        }
+      ],
+      "result": {
+        "name": "stakingBalance",
+        "summary": "integer of the current staking balance in Drip",
+        "description": "integer of the current staking balance in Drip",
+        "schema": {
+          "$ref": "#/components/schemas/QUANTITY"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get staking balance of address in mainnet",
+        "params": [{
+            "value": "cfx:type.user:aarc9abycue0hhzgyrr53m6cxedgccrmmyybjgh4xg"
+          },
+          {
+            "value": "latest_state"
+          }
+        ],
+        "result": {
+          "value": "0x0"
+        }
+      }]
+    },
+    {
+      "name": "cfx_getCollateralForStorage",
+      "summary": "Returns the size of the collateral storage of a given address, in bytes",
+      "description": "Returns the size of the collateral storage of a given address, in bytes",
+      "tags": [{
+        "$ref": "#/components/tags/ACCOUNT"
+      }],
+      "params": [{
+          "summary": "address to check for collateral storage",
+          "description": "address to check for collateral storage",
+          "$ref": "#/components/contentDescriptors/address",
+          "required": true
+        },
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+        }
+      ],
+      "result": {
+        "name": "collateralStorage",
+        "summary": "integer of the collateral storage in Byte",
+        "description": "integer of the collateral storage in Byte",
+        "schema": {
+          "$ref": "#/components/schemas/QUANTITY"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get collateral storage of address in mainnet",
+        "params": [{
+            "value": "cfx:type.user:aarc9abycue0hhzgyrr53m6cxedgccrmmyybjgh4xg"
+          },
+          {
+            "value": "latest_state"
+          }
+        ],
+        "result": {
+          "value": "0x0234c8a8"
+        }
+      }]
+    },
+    {
+      "name": "cfx_getAdmin",
+      "summary": "Returns the admin of the specified contract",
+      "description": "Returns the admin of the specified contract",
+      "tags": [{
+          "$ref": "#/components/tags/ACCOUNT"
+        },
+        {
+          "$ref": "#/components/tags/CONTRACT"
+        }
+      ],
+      "params": [{
+          "summary": "address of the contract",
+          "description": "address of the contract",
+          "$ref": "#/components/contentDescriptors/address",
+          "required": true
+        },
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+        }
+      ],
+      "result": {
+        "name": "adminAddress",
+        "summary": "address of admin, or null if the contract does not exist",
+        "description": "address of admin, or null if the contract does not exist",
+        "schema": {
+          "oneOf": [{
+              "$ref": "#/components/schemas/BASE32"
+            },
+            {
+              "$ref": "#/components/schemas/Null"
+            }
+          ]
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get admin address of a contract in mainnet",
+        "params": [{
+          "value": "cfx:type.contract:acc7uawf5ubtnmezvhu9dhc6sghea0403y2dgpyfjp"
+        }],
+        "result": {
+          "value": "CFX:TYPE.USER:AAT8NZGDDRS7A2XNV2ZS4EUJSR9XDG3FRJXHPB7562"
+        }
+      }]
+    },
+    {
+      "name": "cfx_getCode",
+      "summary": "Returns the code of the specified contract",
+      "description": "Returns the code of the specified contract",
+      "tags": [{
+          "$ref": "#/components/tags/ACCOUNT"
+        },
+        {
+          "$ref": "#/components/tags/CONTRACT"
+        }
+      ],
+      "params": [{
+          "summary": "address of the contract",
+          "description": "address of the contract",
+          "$ref": "#/components/contentDescriptors/address",
+          "required": true
+        },
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+        }
+      ],
+      "result": {
+        "name": "contractByteCode",
+        "summary": "byte code of the contract",
+        "description": "byte code of the contract, or 0x if the account has no code. This RPC will raise an error if the account does not exist",
+        "schema": {
+          "$ref": "#/components/schemas/BASE32"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get byte code of a contract in mainnet",
+        "params": [{
+          "value": "cfx:type.contract:acc7uawf5ubtnmezvhu9dhc6sghea0403y2dgpyfjp"
+        }],
+        "result": {
+          "value": "0x6080604052600436106100705760003560e01c80638da5cb5b1161004e5780638da5cb5b14610146578063a035b1fe14610"
+        }
+      }]
+    },
+    {
+      "name": "cfx_getStorageAt",
+      "summary": "Returns storage entries from a given contract",
+      "description": "Returns storage entries from a given contract",
+      "tags": [{
+          "$ref": "#/components/tags/ACCOUNT"
+        },
+        {
+          "$ref": "#/components/tags/CONTRACT"
+        }
+      ],
+      "params": [{
+          "summary": "address of the contract",
+          "description": "address of the contract",
+          "$ref": "#/components/contentDescriptors/address",
+          "required": true
+        },
+        {
+          "name": "storagePostion",
+          "summary": "a storage position",
+          "description": "32 Bytes - a storage position (see [here](https://solidity.readthedocs.io/en/v0.7.1/internals/layout_in_storage.html) for more info)",
+          "schema": {
+            "$ref": "#/components/schemas/DATA"
+          },
+          "required": true
+        },
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+        }
+      ],
+      "result": {
+        "name": "content",
+        "summary": "the contents of the storage position",
+        "description": "32 Bytes - the contents of the storage position, or null if the contract does not exist",
+        "schema": {
+          "oneOf": [{
+              "$ref": "#/components/schemas/DATA"
+            },
+            {
+              "description": "`null` if the contract does not exist",
+              "$ref": "#/components/schemas/Null"
+            }
+          ]
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get contents of the storage position in mainnet",
+        "params": [{
+          "value": "cfx:type.contract:acc7uawf5ubtnmezvhu9dhc6sghea0403y2dgpyfjp"
+        },{
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },{
+          "value": "latest_state"
+        }],
+        "result": {
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      }]
+    },
+    {
+      "name": "cfx_getStorageRoot",
+      "summary": "Returns the storage root of a given contract",
+      "description": "Returns the storage root of a given contract",
+      "tags": [{
+          "$ref": "#/components/tags/ACCOUNT"
+        },
+        {
+          "$ref": "#/components/tags/CONTRACT"
+        }
+      ],
+      "params": [{
+          "summary": "address of the contract",
+          "description": "address of the contract",
+          "$ref": "#/components/contentDescriptors/address",
+          "required": true
+        },
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+        }
+      ],
+      "result": {
+        "name": "storageRoot",
+        "summary": "a storage root object",
+        "description": "A storage root object, or null if the contract does not exist",
+        "schema": {
+          "oneOf": [{
+              "$ref": "#/components/schemas/StorageRoot"
+            },
+            {
+              "description": "`null` if the contract does not exist",
+              "$ref": "#/components/schemas/Null"
+            }
+          ]
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get contract storage root in mainnet",
+        "params": [{
+          "value": "cfx:type.contract:acc7uawf5ubtnmezvhu9dhc6sghea0403y2dgpyfjp"
+        }],
+        "result": {
+          "value": {
+            "delta": "0x79aa954c08a2c0f6160c5afb9557e9a058779d925cb531b6cc06a6271dbc9c35",
+            "intermediate": "0x999695f36a3095cb0224772057abcc3d12027f7c49f03486893b2cc9a55c6748",
+            "snapshot": "0x78eeb436288507fa39efd1828f7d78218f512dfaeb23ae81e6e79b963c1122e5"
+          }
+        }
+      }]
+    },
+    {
+      "name": "cfx_getSponsorInfo",
+      "summary": "Returns the sponsor info of a given contract",
+      "description": "Returns the sponsor info of a given contract",
+      "tags": [{
+          "$ref": "#/components/tags/ACCOUNT"
+        },
+        {
+          "$ref": "#/components/tags/CONTRACT"
+        }
+      ],
+      "params": [{
+          "summary": "address of the contract",
+          "description": "address of the contract",
+          "$ref": "#/components/contentDescriptors/address",
+          "required": true
+        },
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+        }
+      ],
+      "result": {
+        "name": "sponsorInfo",
+        "summary": "a sponsor info object",
+        "description": "A sponsor info object. If the contract doesn't have a sponsor, then all fields in the object returned will be 0",
+        "schema": {
+          "$ref": "#/components/schemas/SponsorInfo"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get contract sponsor info in mainnet",
+        "params": [{
+          "value": "cfx:type.contract:acc7uawf5ubtnmezvhu9dhc6sghea0403y2dgpyfjp"
+        }],
+        "result": {
+          "value": {
+            "sponsorBalanceForCollateral": "0x40fa436ee99e968000",
+            "sponsorBalanceForGas": "0x8ac722e2dd6fdf5e",
+            "sponsorForCollateral": "CFX:TYPE.CONTRACT:ACBKXBTRUAYAF2HE1899E1533X4WG2A07EYJJRZU31",
+            "sponsorForGas": "CFX:TYPE.CONTRACT:ACGZZ08M8Z2YWKEDA0JZU52FGAZ9U95Y1Y50RNWMT3",
+            "sponsorGasBound": "0x2540be400"
+          }
+        }
+      }]
+    },
+    {
+      "name": "cfx_getNextNonce",
+      "summary": "Returns the next nonce that should be used by the given account when sending a transaction",
+      "description": "Returns the next nonce that should be used by the given account when sending a transaction",
+      "tags": [{
+          "$ref": "#/components/tags/ACCOUNT"
+        },
+        {
+          "$ref": "#/components/tags/TRANSACTION"
+        }
+      ],
+      "params": [{
+          "summary": "address of the account",
+          "description": "address of the account",
+          "$ref": "#/components/contentDescriptors/address",
+          "required": true
+        },
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+        }
+      ],
+      "result": {
+        "name": "nextNonce",
+        "summary": "integer of the next nonce that should be used by the given address",
+        "description": "integer of the next nonce that should be used by the given address",
+        "schema": {
+          "$ref": "#/components/schemas/QUANTITY"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get next nonce for an account in mainnet",
+        "params": [{
+          "value": "cfx:type.user:aarc9abycue0hhzgyrr53m6cxedgccrmmyybjgh4xg"
+        }],
+        "result": {
+          "value": "0x6a"
+        }
+      }]
+    },
+    {
+      "name": "cfx_sendRawTransaction",
+      "summary": "Sends a signed transaction into the network for processing",
+      "description": "Sends a signed transaction into the network for processing",
+      "tags": [{
+        "$ref": "#/components/tags/TRANSACTION"
+      }],
+      "params": [{
+        "name": "signedTransactionData",
+        "summary": "the signed transaction data",
+        "description": "the signed transaction data",
+        "schema": {
+          "$ref": "#/components/schemas/DATA"
+        },
+        "required": true
+      }],
+      "result": {
+        "name": "transactionHash",
+        "summary": "the transaction hash",
+        "description": "32 Bytes - the transaction hash",
+        "schema": {
+          "$ref": "#/components/schemas/DATA"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "send raw transaction in mainnet",
+        "params": [{
+          "value": "0xf86eea8201a28207d0830f4240943838197c0c88d0d5b13b67e1bfdbdc132d4842e389056bc75e2d631000008080a017b8b26f473820475edc49bd153660e56b973b5985bbdb2828fceacb4c91f389a03452f9a69da34ef35acc9c554d7b1d63e9041141674b42c3abb1b57b9f83a2d3"
+        }],
+        "result": {
+          "value": "0xf5338a6cb85d10acc9108869f94fe322b2dfa2715d16d264676c91f6a0404b61"
+        }
+      }]
+    },
+    {
+      "name": "cfx_call",
+      "summary": "Virtually calls a contract, returns the output data. The transaction will not be added to the blockchain",
+      "description": "Virtually calls a contract, returns the output data. The transaction will not be added to the blockchain",
+      "tags": [{
+        "$ref": "#/components/tags/CONTRACT"
+      }],
+      "params": [{
+          "$ref": "#/components/contentDescriptors/callRequest"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+        }
+      ],
+      "result": {
+        "name": "outputData",
+        "summary": "the output data, or an execution error",
+        "description": "Bytes - the output data, or an execution error",
+        "schema": {
+          "$ref": "#/components/schemas/DATA"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "virtually calls a contract in mainnet",
+        "params": [{
+          "value": {
+            "from": "cfx:type.user:aarc9abycue0hhzgyrr53m6cxedgccrmmyybjgh4xg",
+            "to": "cfx:type.contract:acc7uawf5ubtnmezvhu9dhc6sghea0403y2dgpyfjp",
+            "data": "0xa6f2ae3a",
+            "gasPrice": "0x2540be400",
+            "nonce": "0x0"
+          }
+        }],
+        "result": {
+          "value": "0x0"
+        }
+      }]
+    },
+    {
+      "name": "cfx_estimateGasAndCollateral",
+      "summary": "Virtually executes a transaction, returns an estimate for the size of storage collateralized and the gas used by the transaction. The transaction will not be added to the blockchain",
+      "description": "Virtually executes a transaction, returns an estimate for the size of storage collateralized and the gas used by the transaction. The transaction will not be added to the blockchain",
+      "tags": [{
+        "$ref": "#/components/tags/TRANSACTION"
+      }],
+      "params": [{
+          "$ref": "#/components/contentDescriptors/callRequest"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+        }
+      ],
+      "result": {
+        "name": "estimateResult",
+        "summary": "an estimate result object",
+        "description": "an estimate result object or an error",
+        "schema": {
+          "$ref": "#/components/schemas/EstimateResult"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "virtually executes a transaction and gets the estimate in mainnet",
+        "params": [{
+          "value": {
+            "from": "cfx:aatmuv92xj87ptxg6mr11c5amug2kv6ra21g7pbbrp",
+            "to": "cfx:achc8nxj7r451c223m18w2dwjnmhkd6rxawrvkvsy2",
+            "data": "0x9bd9bbc60000000000000000000000008e45db7d866eb1a54992b24d2a8f45d53998100c0000000000000000000000000000000000000000000000000b1a2bc2ec50000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000002000000000000000000000000101130e9d3b904b18586db51cc2db1559d47610e0000000000000000000000001ea847f89a3dd63e66e29b7b8b60540d84c78d0600000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000429d069189e000000000000000000000000000000000000000000000000000006f05b59d3b20000",
+            "gasPrice": "0x1"
+          }
+        }],
+        "result": {
+          "gasLimit": "0x26882",
+          "gasUsed": "0x1ce62",
+          "storageCollateralized": "0x80"
+        }
+      }]
+    },
+    {
+      "name": "cfx_getLogs",
+      "summary": "Returns logs matching the filter provided",
+      "description": "Returns logs matching the filter provided",
+      "tags": [{
+        "$ref": "#/components/tags/TRANSACTION"
+      }],
+      "params": [{
+        "name": "logFilter",
+        "summary": "address of the account",
+        "description": "address of the account",
+        "schema": {
+          "$ref": "#/components/schemas/LogFilter"
+        },
+        "required": true
+      }],
+      "result": {
+        "name": "logs",
+        "summary": "array of log objects corresponding to the matching logs",
+        "description": "array of log objects corresponding to the matching logs",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Log"
+          }
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get logs in mainnet",
+        "params": [{
+          "value": {
+            "fromEpoch": "0x12dd1e3",
+            "toEpoch": "0x12dd246",
+            "address": "cfx:type.contract:acc7uawf5ubtnmezvhu9dhc6sghea0403y2dgpyfjp",
+            "limit": "0x2"
+          }
+        }],
+        "result": {
+          "value": [{
+            "address": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
+            "blockHash": "0x3dbc0a1fc4d33800c455f094d1f02e72a5628a36bd050fbe4e6df5b60afed072",
+            "data": "0x0000000000000000000000008e2f2e68eb75bb8b18caafe9607242d4748f8d9800000000000000000000000000000000000000000000000005565a5b5edaa2cc0000000000000000000000000000000000000000000000000558685917bfc800",
+            "epochNumber": "0x12dd1f1",
+            "logIndex": "0x7",
+            "topics": [
+              "0x4d624906ce6fd4e4b8b649463516ff505029a1903a8cc34bd82b4ca0f9a479de"
+            ],
+            "transactionHash": "0x16be20b90559993d9621b524170591356abb12c04fc4bc74a336253db0769717",
+            "transactionIndex": "0x0",
+            "transactionLogIndex": "0x7"
+          },
+          {
+            "address": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
+            "blockHash": "0x3dbc0a1fc4d33800c455f094d1f02e72a5628a36bd050fbe4e6df5b60afed072",
+            "data": "0x00000000000000000000000087929dda85a959f52cab6083a2fba1b9973f15e00000000000000000000000000000000000000000000000000de2c6356d5c40000000000000000000000000000000000000000000000000000de295b3caf8eacc",
+            "epochNumber": "0x12dd1f1",
+            "logIndex": "0x8",
+            "topics": [
+              "0x4d624906ce6fd4e4b8b649463516ff505029a1903a8cc34bd82b4ca0f9a479de"
+            ],
+            "transactionHash": "0x16be20b90559993d9621b524170591356abb12c04fc4bc74a336253db0769717",
+            "transactionIndex": "0x0",
+            "transactionLogIndex": "0x8"
+          }]
+        }
+      }]
+    },
+    {
+      "name": "cfx_getTransactionReceipt",
+      "summary": "Returns a transaction receipt, identified by the corresponding transaction hash",
+      "description": "Returns a transaction receipt, identified by the corresponding transaction hash",
+      "tags": [{
+        "$ref": "#/components/tags/TRANSACTION"
+      }],
+      "params": [{
+        "name": "transactionHash",
+        "summary": "hash of a transaction",
+        "description": "32 Bytes - hash of a transaction",
+        "schema": {
+          "$ref": "#/components/schemas/DATA"
+        },
+        "required": true
+      }],
+      "result": {
+        "name": "transactionReceipt",
+        "summary": "a transaction receipt object",
+        "description": "a transaction receipt object, or `null` when no transaction was found or the transaction was not executed yet",
+        "schema": {
+          "oneOf": [{
+              "description": "a transaction receipt object",
+              "$ref": "#/components/schemas/TransactionReceipt"
+            },
+            {
+              "description": "`null` when no transaction was found or the transaction was not executed yet",
+              "$ref": "#/components/schemas/Null"
+            }
+          ]
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get transaction receipt in mainnet",
+        "params": [{
+          "value": "0xd78742724603bf5ea32b8ecb5c2a212bc8a93e906bd9991136bf5f784cbb4d08"
+        }],
+        "result": {
+          "value": {
+            "blockHash": "0xf0375f56bd6fd2b5a470836644764e3eeaa9e5e3dc2efbc41316edf4003003f7",
+            "contractCreated": null,
+            "epochNumber": "0x12dd1ec",
+            "from": "CFX:TYPE.USER:AAPDBVJR18YW0MNPM11XBNK5BV118RCM7U5JJ9V7BN",
+            "gasCoveredBySponsor": true,
+            "gasFee": "0x25477",
+            "gasUsed": "0x25477",
+            "index": "0x0",
+            "logs": [
+              {
+                "address": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
+                "data": "0x0000000000000000000000008531b4bd1662b7ca943a3d27794203c7ace53e7200000000000000000000000000000000000000000000008368a98cc8902bb80000000000000000000000000000000000000000000000008368a98cc8902bb800",
+                "topics": [
+                  "0x4d624906ce6fd4e4b8b649463516ff505029a1903a8cc34bd82b4ca0f9a479de"
+                ]
+              },
+              {
+                "address": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
+                "data": "0x000000000000000000000000821c636dfc85d0612fb8ebf34acf84771ba4c3440000000000000000000000000000000000000000000006b823988244bf96e0000000000000000000000000000000000000000000000006b823988244bf96e000",
+                "topics": [
+                  "0x4d624906ce6fd4e4b8b649463516ff505029a1903a8cc34bd82b4ca0f9a479de"
+                ]
+              },
+              {
+                "address": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
+                "data": "0x00000000000000000000000086d2fb177eff4be03a342951269096265b98ac4600000000000000000000000000000000000000000000006a5ded38ba0fc7800000000000000000000000000000000000000000000000006a5ded38ba0fc78000",
+                "topics": [
+                  "0x4d624906ce6fd4e4b8b649463516ff505029a1903a8cc34bd82b4ca0f9a479de"
+                ]
+              },
+              {
+                "address": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
+                "data": "0x000000000000000000000000817cba144f54134e5fa664142ff11df3c74a1c760000000000000000000000000000000000000000000000000de096de94d2d0000000000000000000000000000000000000000000000000000de096de94d2d000",
+                "topics": [
+                  "0x4d624906ce6fd4e4b8b649463516ff505029a1903a8cc34bd82b4ca0f9a479de"
+                ]
+              },
+              {
+                "address": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
+                "data": "0x0000000000000000000000008ddae69c9f99522b11e31749c28e5f7cc89a19420000000000000000000000000000000000000000000006b7deb81845bd982acc0000000000000000000000000000000000000000000006b7deb81845bd982acc",
+                "topics": [
+                  "0x4d624906ce6fd4e4b8b649463516ff505029a1903a8cc34bd82b4ca0f9a479de"
+                ]
+              },
+              {
+                "address": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
+                "data": "0x0000000000000000000000008e2f2e68eb75bb8b18caafe9607242d4748f8d9800000000000000000000000000000000000000000000000005565a5b5edaa2cc00000000000000000000000000000000000000000000000005565a5b5edaa2cc",
+                "topics": [
+                  "0x4d624906ce6fd4e4b8b649463516ff505029a1903a8cc34bd82b4ca0f9a479de"
+                ]
+              },
+              {
+                "address": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
+                "data": "0x00000000000000000000000087929dda85a959f52cab6083a2fba1b9973f15e00000000000000000000000000000000000000000000000000de2c6356d5c40000000000000000000000000000000000000000000000000000de2c6356d5c4000",
+                "topics": [
+                  "0x4d624906ce6fd4e4b8b649463516ff505029a1903a8cc34bd82b4ca0f9a479de"
+                ]
+              },
+              {
+                "address": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
+                "data": "0x000000000000000000000000875e9cb14c3c55591e4db9b835d85efe9b13395b00000000000000000000000000000000000000000000000000c795237bde980000000000000000000000000000000000000000000000000000c795237bde9800",
+                "topics": [
+                  "0x4d624906ce6fd4e4b8b649463516ff505029a1903a8cc34bd82b4ca0f9a479de"
+                ]
+              },
+              {
+                "address": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
+                "data": "0x0000000000000000000000008d7df9316faa0586e175b5e6d03c6bda76e3d95000000000000000000000000000000000000000000000000002db8c846af26b9800000000000000000000000000000000000000000000000002db8c846af26b98",
+                "topics": [
+                  "0x4d624906ce6fd4e4b8b649463516ff505029a1903a8cc34bd82b4ca0f9a479de"
+                ]
+              }
+            ],
+            "logsBloom": "0x00000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000020000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "outcomeStatus": "0x0",
+            "stateRoot": "0x5fdaee2d854fb25e762923c835a2970dd287a5f05b51b190828c83886ac0a94d",
+            "storageCollateralized": "0x0",
+            "storageCoveredBySponsor": true,
+            "storageReleased": [],
+            "to": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
+            "transactionHash": "0xd78742724603bf5ea32b8ecb5c2a212bc8a93e906bd9991136bf5f784cbb4d08",
+            "txExecErrorMsg": null
+          }
+        }
+      }]
+    },
+    {
+      "name": "cfx_getAccount",
+      "summary": "Returns an account, identified by its address",
+      "description": "Returns an account, identified by its address",
+      "tags": [{
+        "$ref": "#/components/tags/ACCOUNT"
+      }],
+      "params": [{
+          "summary": "address of the account",
+          "description": "address of the account",
+          "$ref": "#/components/contentDescriptors/address",
+          "required": true
+        },
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+        }
+      ],
+      "result": {
+        "name": "accountState",
+        "summary": "the state of the given account",
+        "description": "the state of the given account",
+        "schema": {
+          "$ref": "#/components/schemas/AccountState"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get the state of a given account in mainnet",
+        "params": [{
+            "value": "cfx:type.contract:acc7uawf5ubtnmezvhu9dhc6sghea0403y2dgpyfjp"
+          },
+          {
+            "value": "latest_state"
+          }
+        ],
+        "result": {
+          "value": {
+            "accumulatedInterestReturn": "0x0",
+            "address": "CFX:TYPE.CONTRACT:ACC7UAWF5UBTNMEZVHU9DHC6SGHEA0403Y2DGPYFJP",
+            "admin": "CFX:TYPE.USER:AAT8NZGDDRS7A2XNV2ZS4EUJSR9XDG3FRJXHPB7562",
+            "balance": "0x0",
+            "codeHash": "0x17404120e429d743f170be02a42dd5018a3d340863ef7c7bf41db1baab1a1cd7",
+            "collateralForStorage": "0x1314fb3706298000",
+            "nonce": "0x1",
+            "stakingBalance": "0x0"
+          }
+        }
+      }]
+    },
+    {
+      "name": "cfx_getInterestRate",
+      "summary": "Returns the interest rate at the given epoch",
+      "description": "Returns the interest rate at the given epoch",
+      "tags": [{
+        "$ref": "#/components/tags/OTHERS"
+      }],
+      "params": [{
+        "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+      }],
+      "result": {
+        "name": "interestRate",
+        "summary": "the interest rate at the given epoch",
+        "description": "the interest rate at the given epoch",
+        "schema": {
+          "$ref": "#/components/schemas/QUANTITY"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get interest rate in mainnet",
+        "params": [{
+          "value": "latest_state"
+        }],
+        "result": {
+          "value": "0x24b675dc000"
+        }
+      }]
+    },
+    {
+      "name": "cfx_getAccumulateInterestRate",
+      "summary": "Returns the accumulate interest rate at the given epoch",
+      "description": "Returns the accumulate interest rate at the given epoch",
+      "tags": [{
+        "$ref": "#/components/tags/OTHERS"
+      }],
+      "params": [{
+        "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+      }],
+      "result": {
+        "name": "accumulatedInterestRate",
+        "summary": "the accumulate interest rate at the given epoch",
+        "description": "the accumulate interest rate at the given epoch",
+        "schema": {
+          "$ref": "#/components/schemas/QUANTITY"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get interest rate in mainnet",
+        "params": [{
+          "value": "latest_state"
+        }],
+        "result": {
+          "value": "0x3c35a9e557dc9ef76719db0226f"
+        }
+      }]
+    },
+    {
+      "name": "cfx_checkBalanceAgainstTransaction",
+      "summary": "Check if a user's balance is enough to send a transaction with the specified gas and storage limits to the specified contract",
+      "description": "Check if a user's balance is enough to send a transaction with the specified gas and storage limits to the specified contract. The balance is enough if the user can cover the up-front payment of both execution and storage, or if these costs are sponsored by the contract",
+      "tags": [{
+        "$ref": "#/components/tags/ACCOUNT"
+      }, {
+        "$ref": "#/components/tags/CONTRACT"
+      }, {
+        "$ref": "#/components/tags/TRANSACTION"
+      }],
+      "params": [{
+        "name": "user",
+        "summary": "user account address",
+        "description": "user account address",
+        "$ref": "#/components/contentDescriptors/address",
+        "required": true
+      }, {
+        "name": "contract",
+        "summary": "contract address",
+        "description": "contract address",
+        "$ref": "#/components/contentDescriptors/address",
+        "required": true
+      }, {
+        "name": "gasLimit",
+        "summary": "gas limit",
+        "description": "gas limit",
         "schema": {
           "$ref": "#/components/schemas/QUANTITY"
         },
-        "description": "the integer epoch number corresponding to the given tag"
-      }
+        "required": true
+      }, {
+        "name": "gasPrice",
+        "summary": "gas price",
+        "description": "gas price",
+        "schema": {
+          "$ref": "#/components/schemas/QUANTITY"
+        },
+        "required": true
+      }, {
+        "name": "storageLimit",
+        "summary": "storage limit",
+        "description": "storage limit",
+        "schema": {
+          "$ref": "#/components/schemas/QUANTITY"
+        },
+        "required": true
+      }, {
+        "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+      }],
+      "result": {
+        "name": "checkResult",
+        "summary": "a check result object",
+        "description": "a check result object",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "isBalanceEnough": {
+              "type": "boolean",
+              "description": "indicate balance is enough"
+            },
+            "willPayCollateral": {
+              "type": "boolean",
+              "description": "false if the transaction is eligible for storage collateral sponsorship, true otherwise"
+            },
+            "willPayTxFee": {
+              "type": "boolean",
+              "description": "false if the transaction is eligible for gas sponsorship, true otherwise"
+            }
+          }
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "check balance against transaction in mainnet",
+        "params": [{
+          "value": "cfx:aatmuv92xj87ptxg6mr11c5amug2kv6ra21g7pbbrp"
+        }, {
+          "value": "cfx:achc8nxj7r451c223m18w2dwjnmhkd6rxawrvkvsy2"
+        }, {
+          "value": "0x26882"
+        }, {
+          "value": "0x1"
+        }, {
+          "value": "0x80"
+        }],
+        "result": {
+          "value": {
+            "isBalanceEnough": true,
+            "willPayCollateral": false,
+            "willPayTxFee": false
+          }
+        }
+      }]
+    },
+    {
+      "name": "cfx_getSkippedBlocksByEpoch",
+      "summary": "Returns the list of non-executed blocks in an epoch",
+      "description": "Returns the list of non-executed blocks in an epoch. By default, Conflux only executes the last 200 blocks in each epoch (note that under normal circumstances, epochs should be much smaller)",
+      "tags": [{
+        "$ref": "#/components/tags/BLOCK"
+      }],
+      "params": [{
+        "$ref": "#/components/contentDescriptors/epochNumberOrTAG",
+        "required": true
+      }],
+      "result": {
+        "name": "blockHashArray",
+        "summary": "array of skipped block hashes",
+        "description": "array of skipped block hashes",
+        "schema": {
+          "type": "array",
+          "items": {
+            "description": "32 bytes block hash",
+            "$ref": "#/components/schemas/DATA"
+          }
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get skipped blocks by epoch number parameter in mainnet",
+        "params": [{
+          "value": "0xba28"
+        }],
+        "result": {
+          "value": []
+        }
+      }]
+    },
+    {
+      "name": "cfx_getConfirmationRiskByHash",
+      "summary": "Returns the confirmation risk of a given block, identified by its hash",
+      "description": "Returns the confirmation risk of a given block, identified by its hash",
+      "tags": [{
+        "$ref": "#/components/tags/BLOCK"
+      }],
+      "params": [{
+        "name": "blockHash",
+        "summary": "hash of a block",
+        "description": "32 BYTES -hash of a block",
+        "schema": {
+          "$ref": "#/components/schemas/DATA"
+        },
+        "required": true
+      }],
+      "result": {
+        "name": "confirmationRisk",
+        "summary": "the integer confirmation risk",
+        "description": "the integer confirmation risk, or null if the block does not exist",
+        "schema": {
+          "oneOf": [{
+              "description": "the integer confirmation risk",
+              "$ref": "#/components/schemas/QUANTITY"
+            },
+            {
+              "description": "`null` if the block does not exist",
+              "$ref": "#/components/schemas/Null"
+            }
+          ]
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get block confirmation risk in mainnet",
+        "params": [{
+          "value": "0x23a6e84d9a24dffc8436e72b0e240688d23e29b8cda0b301ff20baab1573c9fd"
+        }],
+        "result": {
+          "value": "0x2af31dc4611873bf3f70834acdae9f0f4f534f5d60585a5f1c1a3ced1b"
+        }
+      }]
+    },
+    {
+      "name": "cfx_getStatus",
+      "summary": "Returns the node status",
+      "description": "Returns the node status",
+      "tags": [{
+        "$ref": "#/components/tags/OTHERS"
+      }],
+      "params": [],
+      "result": {
+        "name": "nodeStatus",
+        "summary": "a node status object",
+        "description": "a node status object",
+        "schema": {
+          "$ref": "#/components/schemas/NodeStatus"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get mainnet node status",
+        "params": [],
+        "result": {
+          "value": {
+            "bestHash": "0xf814f25fdcbd8aeedcd301a67e0b1deebc5068c89a34fd129a4309f4b69c21c2",
+            "blockNumber": "0x2d3d391",
+            "chainId": "0x405",
+            "epochNumber": "0x12de460",
+            "latestCheckpoint": "0x12c9920",
+            "latestConfirmed": "0x12de42d",
+            "latestState": "0x12de45c",
+            "networkId": "0x405",
+            "pendingTxNumber": "0x443"
+          }
+        }
+      }]
+    },
+    {
+      "name": "cfx_clientVersion",
+      "summary": "Returns the conflux-rust version",
+      "description": "Returns the conflux-rust version",
+      "tags": [{
+        "$ref": "#/components/tags/OTHERS"
+      }],
+      "params": [],
+      "result": {
+        "name": "clientVersion",
+        "summary": "the client version",
+        "description": "the client version",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get conflux-rust version",
+        "params": [],
+        "result": {
+          "value": "conflux-rust-1.1.4"
+        }
+      }]
+    },
+    {
+      "name": "cfx_getBlockRewardInfo",
+      "summary": "Returns the reward info for all executed blocks in the specified epoch",
+      "description": "Returns the reward info for all executed blocks in the specified epoch",
+      "tags": [{
+        "$ref": "#/components/tags/BLOCK"
+      }],
+      "params": [{
+        "$ref": "#/components/contentDescriptors/epochNumberOrTAG"
+      }],
+      "result": {
+        "name": "rewardInfoArray",
+        "description": "array of reward info objects. Please note that reward calculation is delayed so it might not be available for the latest few epochs (including 'latest_state')",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/RewardInfo"
+          }
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get reward info in mainnet",
+        "params": [{
+          "value": "0x5ee248"
+        }],
+        "result": {
+          "value": [
+            {
+              "author": "CFX:TYPE.USER:AATXETSP0KDARPDB5STDYEX11DR3X6SB0JW2GYKEC0",
+              "baseReward": "0x1b0b87465a480000",
+              "blockHash": "0x0e6e7a6a94a5b4cf4e1acef231b818c036e57c44a6c0d75cfa71bdde25b4faac",
+              "totalReward": "0x1b0bb0893ecee452",
+              "txFee": "0x0"
+            },
+            {
+              "author": "CFX:TYPE.USER:AAMGVYZHT7H1ZXDGHB9EE9W26WRZ8RD3GJ837392DP",
+              "baseReward": "0x1b87df96e16b8000",
+              "blockHash": "0x407fdd57ab72230f0e3ac2401e9225b407c68e7272c23178a5ba64e2f1c84da5",
+              "totalReward": "0x1b8809977af87e1f",
+              "txFee": "0x0"
+            },
+            {
+              "author": "CFX:TYPE.USER:AAMGVYZHT7H1ZXDGHB9EE9W26WRZ8RD3GJ837392DP",
+              "baseReward": "0x1b87df96e16b8000",
+              "blockHash": "0xb676eef9a258e711f227dce6a835c3746bb707844b9112e70c2955406fc83ffd",
+              "totalReward": "0x1b8809977af87e1f",
+              "txFee": "0x0"
+            },
+            {
+              "author": "CFX:TYPE.USER:AAJJ1B1GM7K51MHZM80CZCX31KWXRM2F6JXVY30MVK",
+              "baseReward": "0x1b6b73a1bb378000",
+              "blockHash": "0xee7c35d889c26c6b452bdc6d4c7a242924beecfd6ca77ee7bdfb962b9982c30f",
+              "totalReward": "0x1b6b9d76f830cfff",
+              "txFee": "0x0"
+            },
+            {
+              "author": "CFX:TYPE.USER:AAKVP9X06XY5317W8RZRW2G52228WK49CEBBMZ7SMW",
+              "baseReward": "0x17508f1956a80000",
+              "blockHash": "0xff6aaf2ede7850c679df168d2f9579318e33df0ac145e3e595ddc2503166f4e0",
+              "totalReward": "0x1750b2ab47ccd67c",
+              "txFee": "0x0"
+            },
+            {
+              "author": "CFX:TYPE.USER:AAPKCJR28DG976FZR43C5HF1RWN5XV8T1UY4R2YYEU",
+              "baseReward": "0x1b93f3df11a80000",
+              "blockHash": "0xd37e046b835716c070ef6ecb06159cf3dfffe5473c0877278b61d152b25cf7f4",
+              "totalReward": "0x1b941df218f3c1ba",
+              "txFee": "0x0"
+            }
+          ]
+        }
+      }]
+    },
+    {
+      "name": "cfx_getBlockByHashWithPivotAssumption",
+      "summary": "Returns the requested block if the provided pivot hash is correct, returns an error otherwise",
+      "description": "Returns the requested block if the provided pivot hash is correct, returns an error otherwise",
+      "tags": [{
+        "$ref": "#/components/tags/BLOCK"
+      }],
+      "params": [{
+          "$ref": "#/components/contentDescriptors/blockHash"
+        },
+        {
+          "name": "pivotHash",
+          "summary": "assumed pivot hash",
+          "description": "assumed pivot hash",
+          "schema": {
+            "$ref": "#/components/schemas/DATA"
+          },
+          "required": true
+        },
+        {
+          "name": "epochNumber",
+          "summary": "integer epoch number",
+          "description": "integer epoch number",
+          "schema": {
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "required": true
+        }
+      ],
+      "result": {
+        "$ref": "#/components/contentDescriptors/blockResult"
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get requested block if the provided pivot hash is correct in mainnet",
+        "params": [{
+            "value": "0x23a6e84d9a24dffc8436e72b0e240688d23e29b8cda0b301ff20baab1573c9fd"
+          },
+          {
+            "value": "0x23a6e84d9a24dffc8436e72b0e240688d23e29b8cda0b301ff20baab1573c9fd"
+          },
+          {
+            "value": "0x10c3e6e"
+          }
+        ],
+        "result": {
+          "value": {
+            "adaptive": false,
+            "blame": "0x0",
+            "custom": [
+              [
+                1
+              ]
+            ],
+            "deferredLogsBloomHash": "0xd397b3b043d87fcd6fad1291ff0bfd16401c274896d8c63a923727f077b8e0b5",
+            "deferredReceiptsRoot": "0x1c9e4c6913e56253dd840ed8fb7823b46e5a75b1522212b3464e323787850dfb",
+            "deferredStateRoot": "0x8f726764e0f86c6a79246a4ed5fb0686e457ed5af4a1f971d8e0063873cebfa3",
+            "difficulty": "0xb06f836a76",
+            "epochNumber": "0x10c3e6e",
+            "gasLimit": "0x1c9c380",
+            "gasUsed": "0x1ce62",
+            "hash": "0x23a6e84d9a24dffc8436e72b0e240688d23e29b8cda0b301ff20baab1573c9fd",
+            "height": "0x10c3e6e",
+            "miner": "CFX:TYPE.USER:AAMCR303A3P32J0UU3AVUKHMB0MREVJPSU7HEP08JJ",
+            "nonce": "0x2684000005cdb6d5",
+            "parentHash": "0x3d9eb6622da15cf990a5b994bda07109b87006c2d9304a084cafb1629701f29b",
+            "powQuality": "0xb2fde57e24",
+            "refereeHashes": [
+              "0xa8060293b9691181e4d1e909be316d6b9d40f18df230e781650befb0e9109fa2"
+            ],
+            "size": "0x1f6",
+            "timestamp": "0x60cef8dc",
+            "transactions": [
+              {
+                "blockHash": "0x23a6e84d9a24dffc8436e72b0e240688d23e29b8cda0b301ff20baab1573c9fd",
+                "chainId": "0x405",
+                "contractCreated": null,
+                "data": "0x9bd9bbc60000000000000000000000008e45db7d866eb1a54992b24d2a8f45d53998100c0000000000000000000000000000000000000000000000000b1a2bc2ec50000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000002000000000000000000000000101130e9d3b904b18586db51cc2db1559d47610e0000000000000000000000001ea847f89a3dd63e66e29b7b8b60540d84c78d0600000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000429d069189e000000000000000000000000000000000000000000000000000006f05b59d3b20000",
+                "epochHeight": "0x10c3e51",
+                "from": "CFX:TYPE.USER:AATMUV92XJ87PTXG6MR11C5AMUG2KV6RA21G7PBBRP",
+                "gas": "0x26882",
+                "gasPrice": "0x1",
+                "hash": "0xa2ae4700d3ca272c773628a6bf8c2a7fc794a2d3b27e675107df0f6b1a6cbad7",
+                "nonce": "0x7",
+                "r": "0xf0daa3ceb35f38be4a22309f003ae0cbfbfe62473300140a64d3131c64efbe45",
+                "s": "0x12f7b8248effa5a49eae92b3c1b055e7dcd58f54fb1347958d9acef88490e53",
+                "status": "0x0",
+                "storageLimit": "0x80",
+                "to": "CFX:TYPE.CONTRACT:ACHC8NXJ7R451C223M18W2DWJNMHKD6RXAWRVKVSY2",
+                "transactionIndex": "0x0",
+                "v": "0x0",
+                "value": "0x0"
+              }
+            ],
+            "transactionsRoot": "0x6a8520d409d06c9ae425309a54b64ab4893007c022aa4fec19a5b5cfc95dda89"
+          }
+        }
+      }]
+    },
+    {
+      "name": "cfx_getDepositList",
+      "summary": "Returns the deposit list of the given account, identified by its address",
+      "description": "Returns the deposit list of the given account, identified by its address",
+      "tags": [{
+        "$ref": "#/components/tags/ACCOUNT"
+      }],
+      "params": [{
+          "summary": "address of the account",
+          "description": "address of the account",
+          "$ref": "#/components/contentDescriptors/address",
+          "required": true
+        },
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+        }
+      ],
+      "result": {
+        "name": "depositInfoArray",
+        "summary": "array of deposit info objects",
+        "description": "array of deposit info objects",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/DepositInfo"
+          }
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get balance of address in mainnet",
+        "params": [{
+            "value": "cfx:aan02vpwvz8crpa1n10j17ufceefptdc2yzkagxk5u"
+          },
+          {
+            "value": "latest_state"
+          }
+        ],
+        "result": {
+          "value": [{
+            "accumulatedInterestRate": "0x3c4517ac75006c913c52c2402e8",
+            "amount": "0x8ac7230489e80000",
+            "depositTime": 3135949
+          }, {
+            "accumulatedInterestRate": "0x3c451870afdac66f40804d95742",
+            "amount": "0x8ac7230489e80000",
+            "depositTime": 3136255
+          }]
+        }
+      }]
+    },
+    {
+      "name": "cfx_getVoteList",
+      "summary": "Returns the vote list of the given account, identified by its address",
+      "description": "Returns the vote list of the given account, identified by its address. For getting the current block number, please refer to [conflux-rust#1973](https://github.com/Conflux-Chain/conflux-rust/issues/1973)",
+      "tags": [{
+        "$ref": "#/components/tags/ACCOUNT"
+      }],
+      "params": [{
+          "summary": "address of the account",
+          "description": "address of the account",
+          "$ref": "#/components/contentDescriptors/address",
+          "required": true
+        },
+        {
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAGDefaultingToLatestState"
+        }
+      ],
+      "result": {
+        "name": "voteInfoArray",
+        "summary": "array of vote info objects",
+        "description": "array of vote info objects",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/VoteInfo"
+          }
+        }
+      },
+      "examples": [{
+        "name": "Mainnet Example",
+        "summary": "get vote list of the given account in mainnet",
+        "params": [{
+            "value": "cfx:aan02vpwvz8crpa1n10j17ufceefptdc2yzkagxk5u"
+          },
+          {
+            "value": "latest_state"
+          }
+        ],
+        "result": {
+          "value": [{
+            "amount": "0x8ac7230489e80000",
+            "unlockBlockNumber": 1000000000000
+          }]
+        }
+      }]
     }
   ],
-  "servers": [
+  "servers": [{
+      "name": "Conflux Mainnet",
+      "url": "https://main.confluxrpc.com",
+      "description": "Conflux mainnet. https://main.confluxrpc.com",
+      "variables": {}
+    },
     {
       "name": "Conflux Testnet",
       "url": "https://test.confluxrpc.com",
       "description": "Conflux testnet. https://test.confluxrpc.com",
-      "variables": {
-      }
+      "variables": {}
     }
   ],
   "components": {
     "contentDescriptors": {
-      "epochNumberOrTAG": {
+      "epochNumberOrTAGDefaultingToLatestState": {
         "name": "epochNumberOrTAG",
         "summary": "Parameter for epoch number",
-        "description": "the epoch number, or the string `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter)",
+        "description": "(optional, default: `'latest_state'`) the epoch number, or the string `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter)",
         "schema": {
-          "oneOf": [
-            {
+          "oneOf": [{
               "description": "epoch number",
               "$ref": "#/components/schemas/QUANTITY"
             },
@@ -264,10 +1652,19 @@
           ]
         }
       },
+      "epochNumberOrTAG": {
+        "name": "epochNumberOrTAG",
+        "summary": "Parameter for epoch number",
+        "description": "the epoch number, or the string `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter)",
+        "schema": {
+          "$ref": "#/components/schemas/EpochNumberOrTAG"
+        },
+        "required": true
+      },
       "epochNumberTAG": {
         "name": "epochNumberTAG",
         "summary": "Tag for epoch number",
-        "description": "Tag for epoch number. String `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter)",
+        "description": "tag for epoch number. String `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter)",
         "schema": {
           "$ref": "#/components/schemas/TAG"
         }
@@ -285,8 +1682,7 @@
         "summary": "A transaction object",
         "description": "A transaction object, or `null` when no transaction was found",
         "schema": {
-          "oneOf": [
-            {
+          "oneOf": [{
               "description": "A transaction object. Note that the fields `blockHash`, `contractCreated`, `status`, and `transactionIndex` are provided by the node as they depend on the transaction's position within the ledger. The rest of the fields are included in or derived from the original transaction",
               "$ref": "#/components/schemas/Transaction"
             },
@@ -302,8 +1698,7 @@
         "summary": "A block object",
         "description": "A block object, or `null` when no block was found",
         "schema": {
-          "oneOf": [
-            {
+          "oneOf": [{
               "description": "A block object. Note that the fields `epochNumber` and `gasUsed` are provided by the node as they depend on the ledger. The rest of the fields are included in or derived from the block header directly.",
               "$ref": "#/components/schemas/Block"
             },
@@ -313,6 +1708,32 @@
             }
           ]
         }
+      },
+      "address": {
+        "name": "address",
+        "summary": "address",
+        "description": "address",
+        "schema": {
+          "$ref": "#/components/schemas/BASE32"
+        }
+      },
+      "blockHash": {
+        "name": "blockHash",
+        "summary": "hash of a block",
+        "description": "32 bytes - hash of a block",
+        "schema": {
+          "$ref": "#/components/schemas/DATA"
+        },
+        "required": true
+      },
+      "callRequest": {
+        "name": "callRequest",
+        "summary": "a call request object",
+        "description": "a call request object",
+        "schema": {
+          "$ref": "#/components/schemas/CallRequest"
+        },
+        "required": true
       }
     },
     "schemas": {
@@ -321,14 +1742,18 @@
         "type": "null",
         "description": "Null"
       },
+      "EpochNumberOrTAG": {
+        "title": "QUANTITY | TAG",
+        "type": "string",
+        "description": "the epoch number, or the string `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter)"
+      },
       "Transaction": {
         "title": "transaction",
         "type": "object",
         "description": "a transaction object",
         "properties": {
           "blockHash": {
-            "oneOf": [
-              {
+            "oneOf": [{
                 "description": "32 Bytes DATA - hash of the block where this transaction was in and got executed",
                 "$ref": "#/components/schemas/DATA"
               },
@@ -343,8 +1768,7 @@
             "$ref": "#/components/schemas/QUANTITY"
           },
           "contractCreated": {
-            "oneOf": [
-              {
+            "oneOf": [{
                 "description": "address of the contract created",
                 "$ref": "#/components/schemas/BASE32"
               },
@@ -391,8 +1815,7 @@
             "$ref": "#/components/schemas/DATA"
           },
           "status": {
-            "oneOf": [
-              {
+            "oneOf": [{
                 "description": "0 for success, 1 for error occured",
                 "$ref": "#/components/schemas/QUANTITY"
               },
@@ -407,8 +1830,7 @@
             "$ref": "#/components/schemas/QUANTITY"
           },
           "to": {
-            "oneOf": [
-              {
+            "oneOf": [{
                 "description": "address of the receiver",
                 "$ref": "#/components/schemas/BASE32"
               },
@@ -419,8 +1841,7 @@
             ]
           },
           "transactionIndex": {
-            "oneOf": [
-              {
+            "oneOf": [{
                 "description": "the transaction's position in the block",
                 "$ref": "#/components/schemas/QUANTITY"
               },
@@ -470,8 +1891,7 @@
             "$ref": "#/components/schemas/QUANTITY"
           },
           "epochNumber": {
-            "oneOf": [
-              {
+            "oneOf": [{
                 "description": "the number of the epoch containing this block in the node's view of the ledger",
                 "$ref": "#/components/schemas/QUANTITY"
               },
@@ -486,8 +1906,7 @@
             "$ref": "#/components/schemas/QUANTITY"
           },
           "gasUsed": {
-            "oneOf": [
-              {
+            "oneOf": [{
                 "description": "the total gas used in this block",
                 "$ref": "#/components/schemas/QUANTITY"
               },
@@ -518,8 +1937,7 @@
             "$ref": "#/components/schemas/DATA"
           },
           "powQuality": {
-            "oneOf": [
-              {
+            "oneOf": [{
                 "description": "the PoW quality",
                 "$ref": "#/components/schemas/DATA"
               },
@@ -531,6 +1949,10 @@
           },
           "refereeHashes": {
             "type": "array",
+            "items": {
+              "description": "32-byte, hash of a referee block",
+              "$ref": "#/components/schemas/DATA"
+            },
             "description": "array of referee block hashes"
           },
           "size": {
@@ -542,8 +1964,7 @@
             "$ref": "#/components/schemas/QUANTITY"
           },
           "transactions": {
-            "oneOf": [
-              {
+            "oneOf": [{
                 "type": "array",
                 "description": "transaction objects if the second parameter is `true`",
                 "items": {
@@ -563,6 +1984,479 @@
           "transactionsRoot": {
             "description": "32 Bytes - the Merkle root of the transactions in this block",
             "$ref": "#/components/schemas/DATA"
+          }
+        }
+      },
+      "StorageRoot": {
+        "title": "StorageRoot",
+        "type": "object",
+        "description": "a storage root object",
+        "properties": {
+          "delta": {
+            "oneOf": [{
+                "description": "32 Bytes - the storage root in the delta trie",
+                "$ref": "#/components/schemas/DATA"
+              },
+              {
+                "description": "string `'TOMBSTONE'`",
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Null"
+              }
+            ]
+          },
+          "intermediate": {
+            "oneOf": [{
+                "description": "32 Bytes - storage root in the intermediate trie",
+                "$ref": "#/components/schemas/DATA"
+              },
+              {
+                "description": "string `'TOMBSTONE'`",
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Null"
+              }
+            ]
+          },
+          "snapshot": {
+            "oneOf": [{
+                "description": "32 Bytes - storage root in the snapshot",
+                "$ref": "#/components/schemas/DATA"
+              },
+              {
+                "description": "string `'TOMBSTONE'`",
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Null"
+              }
+            ]
+          }
+        }
+      },
+      "SponsorInfo": {
+        "title": "SponsorInfo",
+        "type": "object",
+        "description": "a sponsor info object",
+        "properties": {
+          "sponsorBalanceForCollateral": {
+            "description": "the sponsored balance for storage",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "sponsorBalanceForGas": {
+            "description": "the sponsored balance for gas",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "sponsorGasBound": {
+            "description": "the max gas that could be sponsored for one transaction",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "sponsorForCollateral": {
+            "description": "the address of the storage sponsor",
+            "$ref": "#/components/schemas/BASE32"
+          },
+          "sponsorForGas": {
+            "description": "the address of the gas sponsor",
+            "$ref": "#/components/schemas/BASE32"
+          }
+        }
+      },
+      "CallRequest": {
+        "title": "CallRequest",
+        "type": "object",
+        "description": "a call request object",
+        "properties": {
+          "from": {
+            "description": "(optional, default: random address) address of sender",
+            "$ref": "#/components/schemas/BASE32"
+          },
+          "to": {
+            "description": "(optional, default: null for contract creation) address of receiver",
+            "$ref": "#/components/schemas/BASE32"
+          },
+          "gasPrice": {
+            "description": "(optional, default: 0) gas price provided by the sender in Drip",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "gas": {
+            "description": "(optional, default: 500000000) gas provided by the sender",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "value": {
+            "description": "(optional, default: 0) value transferred in Drip",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "data": {
+            "description": "(optional, default: 0x) the data send along with the transaction",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "nonce": {
+            "description": "(optional, default: 0) the number of transactions made by the sender prior to this one",
+            "$ref": "#/components/schemas/QUANTITY"
+          }
+        }
+      },
+      "EstimateResult": {
+        "title": "EstimateResult",
+        "type": "object",
+        "description": " an estimate result object",
+        "properties": {
+          "gasUsed": {
+            "description": "gas used during execution",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "gasLimit": {
+            "description": "gas limit",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "storageCollateralized": {
+            "description": "size of storage collateralized, in bytes",
+            "$ref": "#/components/schemas/QUANTITY"
+          }
+        }
+      },
+      "LogFilter": {
+        "title": "LogFilter",
+        "type": "object",
+        "description": "A log filter object",
+        "properties": {
+          "fromEpoch": {
+            "description": "(optional, default: `'latest_checkpoint') the epoch number, or the string `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter)",
+            "$ref": "#/components/schemas/EpochNumberOrTAG"
+          },
+          "toEpoch": {
+            "description": "(optional, default: `'latest_state') the epoch number, or the string `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter)",
+            "$ref": "#/components/schemas/EpochNumberOrTAG"
+          },
+          "blockHashes": {
+            "description": "(optional, default: null) Array of up to 128 block hashes that the search will be applied to. This will override from/to epoch fields if it's not `null`",
+            "type": "array",
+            "items": {
+              "description": "32-byte, hash of a block",
+              "$ref": "#/components/schemas/DATA"
+            }
+          },
+          "address": {
+            "description": "(optional, default: null) Search contract addresses. If null, match all. If specified, the log must be produced by one of these contracts",
+            "type": "array",
+            "items": {
+              "description": "32-byte, hash of a contract address",
+              "$ref": "#/components/schemas/BASE32"
+            }
+          },
+          "topics": {
+            "description": "(optional, default: null) 32-byte event topics.Logs can have 4 topics: the event signature and up to 3 indexed event arguments. The elements of topics match the corresponding log topics. Example: ['0xA', null, ['0xB', '0xC'], null] matches logs with '0xA' as the 1st topic AND ('0xB' OR '0xC') as the 3rd topic. If null, match all.",
+            "type": "array",
+            "items": {
+              "description": "32-byte, event topic",
+              "$ref": "#/components/schemas/DATA"
+            }
+          },
+          "limit": {
+            "description": "(optional, default: null) If null return all logs, otherwise should only return the last limit logs. Note: if the node has get_logs_filter_max_limit set, it will override limit if it is null or greater than the preset value",
+            "$ref": "#/components/schemas/QUANTITY"
+          }
+        }
+      },
+      "Log": {
+        "title": "Log",
+        "type": "object",
+        "description": "a log object",
+        "properties": {
+          "address": {
+            "description": "address of the contract that emitted the log",
+            "$ref": "#/components/schemas/BASE32"
+          },
+          "topics": {
+            "description": "array of 32-byte event topics",
+            "type": "array",
+            "items": {
+              "description": "32-byte, event topic",
+              "$ref": "#/components/schemas/DATA"
+            }
+          },
+          "data": {
+            "description": "data of log",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "blockHash": {
+            "description": "32 Bytes - hash of the block containing the log",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "epochNumber": {
+            "description": "epoch number of the block containing the log",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "transactionHash": {
+            "description": "32 Bytes - hash of the transaction that created the log",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "transactionIndex": {
+            "description": "transaction index in the block",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "logIndex": {
+            "description": "log index in the block",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "transactionLogIndex": {
+            "description": "log index in transaction",
+            "$ref": "#/components/schemas/QUANTITY"
+          }
+        }
+      },
+      "TransactionReceipt": {
+        "title": "TransactionReceipt",
+        "type": "object",
+        "description": "a transaction receipt object",
+        "properties": {
+          "transactionHash": {
+            "description": "32 Bytes - hash of the given transaction",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "index": {
+            "description": "transaction index within the block",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "blockHash": {
+            "description": "32 Bytes - hash of the block where this transaction was in and got executed",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "epochNumber": {
+            "description": "epoch number of the block where this transaction was in and got executed",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "from": {
+            "description": " address of the sender",
+            "$ref": "#/components/schemas/BASE32"
+          },
+          "to": {
+            "oneOf": [{
+                "description": "address of the receiver",
+                "$ref": "#/components/schemas/BASE32"
+              },
+              {
+                "description": "`null` when it is a contract deployment transaction",
+                "$ref": "#/components/schemas/Null"
+              }
+            ]
+          },
+          "gasUsed": {
+            "description": "gas used for executing the transaction",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "gasFee": {
+            "description": "gas charged to the sender's account. If the provided gas (gas limit) is larger than the gas used, at most 1/4 of it is refunded",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "gasCoveredBySponsor": {
+            "description": "true if this transaction's gas fee was covered by the sponsor",
+            "type": "boolean"
+          },
+          "storageCollateralized": {
+            "description": "the amount of storage collateral this transaction required",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "storageCoveredBySponsor": {
+            "description": "true if this transaction's storage collateral was covered by the sponsor",
+            "type": "boolean"
+          },
+          "storageReleased": {
+            "description": "array of storage change objects, each specifying an address and the corresponding amount of storage collateral released, e.g., `[{ 'address': 'CFX:TYPE.USER:AARC9ABYCUE0HHZGYRR53M6CXEDGCCRMMYYBJGH4XG', 'collaterals': '0x280' }]`",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StorageChange"
+            }
+          },
+          "contractCreated": {
+            "oneOf": [{
+                "description": "address of the contract created",
+                "$ref": "#/components/schemas/BASE32"
+              },
+              {
+                "description": "`null` when the transaction is not a contract deployment transaction",
+                "$ref": "#/components/schemas/Null"
+              }
+            ]
+          },
+          "stateRoot": {
+            "description": "32 Bytes - hash of the state root after the execution of the corresponding block. `0` if the state root is not available",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "outcomeStatus": {
+            "description": "the outcome status code. `0x0` means success",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "logsBloom": {
+            "description": "256 Bytes - bloom filter for light clients to quickly retrieve related logs",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "logs": {
+            "type": "array",
+            "description": "array of log objects that this transaction generated, see cfx_getLogs",
+            "items": {
+              "$ref": "#/components/schemas/Log"
+            }
+          }
+        }
+      },
+      "StorageChange": {
+        "title": "StorageChange",
+        "type": "object",
+        "description": "a storage change object",
+        "properties": {
+          "address": {
+            "description": "an address",
+            "$ref": "#/components/schemas/BASE32"
+          },
+          "storageReleased": {
+            "description": "the amount of storage collateral released of the address",
+            "$ref": "#/components/schemas/QUANTITY"
+          }
+        }
+      },
+      "AccountState": {
+        "title": "AccountState",
+        "type": "object",
+        "description": "the state of a given account",
+        "properties": {
+          "balance": {
+            "description": "the balance of the account",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "nonce": {
+            "description": "the nonce of the account's next transaction",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "codeHash": {
+            "description": "the code hash of the account",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "stakingBalance": {
+            "description": "the staking balance of the account",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "collateralForStorage": {
+            "description": "the collateral storage of the account",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "accumulatedInterestReturn": {
+            "description": "accumulated interest return of the account",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "admin": {
+            "description": "admin of the account",
+            "$ref": "#/components/schemas/BASE32"
+          },
+          "address": {
+            "description": "the account address",
+            "$ref": "#/components/schemas/BASE32"
+          }
+        }
+      },
+      "NodeStatus": {
+        "title": "NodeStatus",
+        "type": "object",
+        "description": "a node status object",
+        "properties": {
+          "bestHash": {
+            "description": "hash of the latest epoch's pivot block",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "blockNumber": {
+            "description": "total block number",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "chainId": {
+            "description": "chainId",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "networkId": {
+            "description": "networkId",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "epochNumber": {
+            "description": "latest epoch number",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "latestCheckpoint": {
+            "description": "latest checkpoint epoch number",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "latestConfirmed": {
+            "description": "latest confirmed epoch number",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "latestState": {
+            "description": "latest state epoch number",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "pendingTxNumber": {
+            "description": "current pending transaction count",
+            "$ref": "#/components/schemas/QUANTITY"
+          }
+        }
+      },
+      "RewardInfo": {
+        "title": "RewardInfo",
+        "type": "object",
+        "description": "a reward info object",
+        "properties": {
+          "blockHash": {
+            "description": "the block hash",
+            "$ref": "#/components/schemas/DATA"
+          },
+          "author": {
+            "description": "the address of block miner",
+            "$ref": "#/components/schemas/BASE32"
+          },
+          "totalReward": {
+            "description": "total reward of the block including base reward, tx fee, staking reward",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "baseReward": {
+            "description": "base reward",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "txFee": {
+            "description": "tx fee",
+            "$ref": "#/components/schemas/QUANTITY"
+          }
+        }
+      },
+      "DepositInfo": {
+        "title": "DepositInfo",
+        "description": "a deposit info object",
+        "type": "object",
+        "properties": {
+          "accumulatedInterestRate": {
+            "description": "the accumulated interest rate at the time of the deposit",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "amount": {
+            "description": "the number of tokens deposited",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "depositTime": {
+            "description": "the time of the deposit",
+            "$ref": "#/components/schemas/QUANTITY"
+          }
+        }
+      },
+      "VoteInfo": {
+        "title": "VoteInfo",
+        "description": "a vote info object",
+        "type": "object",
+        "properties": {
+          "amount": {
+            "description": "the number of tokens deposited",
+            "$ref": "#/components/schemas/QUANTITY"
+          },
+          "unlockBlockNumber": {
+            "description": "the block number at which the locked tokens are released",
+            "$ref": "#/components/schemas/QUANTITY"
           }
         }
       },
@@ -599,6 +2493,10 @@
       "ACCOUNT": {
         "name": "ACCOUNT",
         "description": "ACCOUNT related methods"
+      },
+      "CONTRACT": {
+        "name": "CONTRACT",
+        "description": "CONTRACT related methods"
       },
       "OTHERS": {
         "name": "OTHERS"
