@@ -27,9 +27,11 @@
         "name": "Mainnet Example",
         "summary": "get transaction by hash in mainnet",
         "params": [{
+          "name": "Mainnet Transaction Hash",
           "value": "0xa2ae4700d3ca272c773628a6bf8c2a7fc794a2d3b27e675107df0f6b1a6cbad7"
         }],
         "result": {
+          "name": "Mainnet Result",
           "value": {
             "blockHash": "0xf48cc108af0a5651b1d51bfe95bdce7fca2cb5ba225a079e7f8458b4b765fbc9",
             "chainId": "0x1",
@@ -70,8 +72,7 @@
           "required": true
         },
         {
-          "$ref": "#/components/contentDescriptors/transactionObjectFlag",
-          "required": true
+          "$ref": "#/components/contentDescriptors/transactionObjectFlag"
         }
       ],
       "result": {
@@ -130,12 +131,10 @@
         "$ref": "#/components/tags/BLOCK"
       }],
       "params": [{
-          "$ref": "#/components/contentDescriptors/epochNumberOrTAG",
-          "required": true
+          "$ref": "#/components/contentDescriptors/epochNumberOrTAG"
         },
         {
-          "$ref": "#/components/contentDescriptors/transactionObjectFlag",
-          "required": true
+          "$ref": "#/components/contentDescriptors/transactionObjectFlag"
         }
       ],
       "result": {
@@ -1638,8 +1637,8 @@
   "components": {
     "contentDescriptors": {
       "epochNumberOrTAGDefaultingToLatestState": {
-        "name": "epochNumberOrTAG",
-        "summary": "Parameter for epoch number",
+        "name": "optionalEpochNumberOrTAG",
+        "summary": "Parameter for epoch number (optional, defaulting to `latest_state`)",
         "description": "(optional, default: `'latest_state'`) the epoch number, or the string `'latest_mined'`, `'latest_state'`, `'latest_confirmed'`, `'latest_checkpoint'` or `'earliest'`, see [the epoch number parameter](http://developer.confluxnetwork.org/conflux-doc/docs/json_rpc/#the-epoch-number-parameter)",
         "schema": {
           "oneOf": [{
@@ -1675,7 +1674,8 @@
         "description": "if `true`, the method returns the full transaction objects. If `false`, only the hashes of the transactions are returned",
         "schema": {
           "type": "boolean"
-        }
+        },
+        "required": true
       },
       "transactionResult": {
         "name": "transactionResult",
